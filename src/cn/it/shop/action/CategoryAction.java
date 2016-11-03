@@ -6,6 +6,9 @@ import cn.it.shop.service.CategoryService;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class CategoryAction extends ActionSupport {
+	public CategoryAction(){
+		System.out.println("---CategoryAction----");
+	}
 	private Category category;//设置一个私有成员变量接收url带过来的参数，注意写好get&&set方法
 	
 	public Category getCategory() {

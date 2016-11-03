@@ -1,0 +1,63 @@
+package cn.it.shop.service.impl;
+
+import java.lang.reflect.ParameterizedType;
+import java.util.List;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+
+import cn.it.shop.service.BaseService;
+/*
+ * 公共模块的抽取
+ */
+@SuppressWarnings("unchecked")
+public class BaseServiceImpl<T> implements BaseService<T> {
+
+	private Class clazz;//clazz中存储了当前操作的类型
+	
+	public BaseServiceImpl(){
+		System.out.println("this代表的是当前调用构造方法的对象："+this);
+		System.out.println("获取当前this对象的父类信息："+this.getClass().getSuperclass());
+		System.out.println("获取当前this对象的父类信息(包括泛型信息)："+this.getClass().getGenericSuperclass());
+		ParameterizedType type=(ParameterizedType) this.getClass().getClass().getGenericSuperclass();
+		clazz=(Class)type.getActualTypeArguments()[0];
+	}
+	
+	private SessionFactory sessionFactory;
+	protected Session getSession(){
+		//从当前线程获取session，如果没有创建一个新的session
+		return sessionFactory.getCurrentSession();
+	}
+	public void setSessionFactory(SessionFactory sessionFactory) {
+		this.sessionFactory = sessionFactory;
+	}
+	@Override
+	public void save(T t) {
+		getSession().update(t);
+	}
+	@Override
+	public void update(T t) {
+		getSession().update(t);
+	}
+	@Override
+	public void delete(int id) {
+		//此方法删除有缺陷，删除的时候得先查询，如果数据为空会报错
+//		Object object=getSession().get(clazz, id);
+//		if(object!=null){
+//			getSession().delete(object);
+//		}
+		String hql="DELETE "+clazz.getSimpleName()+" WHERE id=:id";
+		getSession().createQuery(hql)
+		.setInteger("id", id)
+		.executeUpdate();
+	}
+	@Override
+	public T get(int id) {
+		return (T) getSession().get(clazz, id);
+	}
+	@Override
+	public List<T> query() {
+		String hql="FROM "+clazz.getSimpleName();
+		return getSession().createQuery(hql).list();
+	}
+}
