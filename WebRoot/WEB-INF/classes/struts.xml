@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<package name="shop" extends="struts-default">
+	<!-- category_update.action：访问update方法 -->
+	<!-- category_save.action -->
+	<!-- class对应的是Spring中配置该Action的id值，因为要交给Spring来管理 -->
+		<action name="category_*" class="categoryAction" method="{1}">
+			<result name="index">/index.jsp</result>
+		</action>
+	</package>
+</struts>    
