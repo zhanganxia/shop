@@ -21,14 +21,13 @@ import com.opensymphony.xwork2.ModelDriven;
 public class CategoryAction extends BaseAction<Category>{
 	
 	public String update(){
-		//System.out.println(ActionContext.getContext().getValueStack().getRoot());
+		System.out.println(ActionContext.getContext().getValueStack().getRoot());
 		System.out.println("-- update--");
-		categoryService.update(model);//直接使用model
+		System.out.println(model);//直接使用model
 		return "index";
 	}
 	public String save(){
 		System.out.println("-- save--");
-		categoryService.update(model);//直接使用model
 		return "index";
 	}
 	public String query(){
