@@ -3,6 +3,7 @@ package cn.it.shop.action;
 import cn.it.shop.model.Category;
 import cn.it.shop.service.CategoryService;
 
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class CategoryAction extends ActionSupport {
@@ -22,6 +23,8 @@ public class CategoryAction extends ActionSupport {
 		this.categoryService=categoryService;
 	}
 	public String update(){
+		//值栈
+		//ActionContext.getContext().getValueStack().push();
 		System.out.println("-- update--");
 		System.out.println(categoryService);//整合前后输出不同
 		categoryService.update(category);//新加一条语句，来跟新数据库
@@ -30,6 +33,16 @@ public class CategoryAction extends ActionSupport {
 	public String save(){
 		System.out.println("-- save--");
 		System.out.println(categoryService);
+		return "index";
+	}
+	public String query(){
+		//方案一,采用相应的map取代原来的内置对象，这样与jsp没有依赖，但是代码量较大
+		ActionContext.getContext().put("categoryList", categoryService.query());//放到ruquest域中
+		ActionContext.getContext().getSession().put("categoryList", categoryService.query());//放到session域中
+		ActionContext.getContext().getApplication().put("categoryList", categoryService.query());//放到Application域中
+		
+		//方案二：实现相应的接口(RequestAware,SessionAware,ApplicationAware).让相应的map注入
+		
 		return "index";
 	}
 }
