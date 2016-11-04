@@ -1,12 +1,17 @@
 package cn.it.shop.action;
 
+import java.util.Map;
+
+import org.apache.struts2.interceptor.ApplicationAware;
+import org.apache.struts2.interceptor.RequestAware;
+import org.apache.struts2.interceptor.SessionAware;
+
 import cn.it.shop.model.Category;
 import cn.it.shop.service.CategoryService;
 
-import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
-public class CategoryAction extends ActionSupport {
+public class CategoryAction extends ActionSupport implements RequestAware,SessionAware,ApplicationAware {
 	public CategoryAction(){
 		System.out.println("---CategoryAction----");
 	}
@@ -37,12 +42,33 @@ public class CategoryAction extends ActionSupport {
 	}
 	public String query(){
 		//方案一,采用相应的map取代原来的内置对象，这样与jsp没有依赖，但是代码量较大
-		ActionContext.getContext().put("categoryList", categoryService.query());//放到ruquest域中
-		ActionContext.getContext().getSession().put("categoryList", categoryService.query());//放到session域中
-		ActionContext.getContext().getApplication().put("categoryList", categoryService.query());//放到Application域中
+//		ActionContext.getContext().put("categoryList", categoryService.query());//放到ruquest域中
+//		ActionContext.getContext().getSession().put("categoryList", categoryService.query());//放到session域中
+//		ActionContext.getContext().getApplication().put("categoryList", categoryService.query());//放到Application域中
 		
 		//方案二：实现相应的接口(RequestAware,SessionAware,ApplicationAware).让相应的map注入
-		
+		System.out.println("方案二");
+		request.put("categoryList", categoryService.query());
+		session.put("categoryList", categoryService.query());
+		application.put("categoryList", categoryService.query());
 		return "index";
+	}
+	private Map<String,Object> request;
+	private Map<String,Object> session;
+	private Map<String,Object> application;
+	@Override
+	public void setApplication(Map<String, Object> application) {
+		// TODO Auto-generated method stub
+		this.application=application;
+	}
+	@Override
+	public void setSession(Map<String, Object> session) {
+		// TODO Auto-generated method stub
+		this.session=session;
+	}
+	@Override
+	public void setRequest(Map<String, Object> request) {
+		this.request=request;
+		
 	}
 }
