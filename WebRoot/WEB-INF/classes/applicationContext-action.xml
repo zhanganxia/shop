@@ -6,9 +6,13 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd"
 	>
 <!--如果是prototype类型：则默认即使使用的时候在创建，不会启动的时候自动创建  -->
+	<bean id="baseAction" class="cn.it.shop.action.BaseAction" scope="prototype">
+		<property name="categoryService" ref="categoryService"/>
+		<property name="accountService" ref="accountService"/>
+	</bean>
 
-<bean id="categoryAction" class="cn.it.shop.action.CategoryAction" scope="prototype">
-<property name="categoryService" ref="categoryService"/>	
-</bean>
+	<bean id="categoryAction" class="cn.it.shop.action.CategoryAction" scope="prototype" parent="baseAction">
+	
+	</bean>
 	
 </beans>

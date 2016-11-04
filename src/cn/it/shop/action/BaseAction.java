@@ -35,13 +35,16 @@ public class BaseAction<T> extends ActionSupport implements RequestAware,Session
 
 	protected T model;
 	
-
-//	protected AccountService accountService;
-//	
-//	public void setAccountService(AccountService accountService) {
-//		System.out.println("accountService:"+accountService);
-//		this.accountService = accountService;
-//	}
+	protected AccountService accountService;
+	protected CategoryService categoryService;
+	
+	public void  setCategoryService(CategoryService categoryService){
+		this.categoryService=categoryService;
+	}
+	public void setAccountService(AccountService accountService) {
+		System.out.println("accountService:"+accountService);
+		this.accountService = accountService;
+	}
 	protected Map<String,Object> request;
 	protected Map<String,Object> session;
 	protected Map<String,Object> application;
