@@ -11,7 +11,7 @@ import cn.it.shop.service.CategoryService;
 
 import com.opensymphony.xwork2.ActionSupport;
 
-public class CategoryAction extends ActionSupport implements RequestAware,SessionAware,ApplicationAware {
+public class CategoryAction extends BaseAction{
 	public CategoryAction(){
 		System.out.println("---CategoryAction----");
 	}
@@ -47,28 +47,12 @@ public class CategoryAction extends ActionSupport implements RequestAware,Sessio
 //		ActionContext.getContext().getApplication().put("categoryList", categoryService.query());//放到Application域中
 		
 		//方案二：实现相应的接口(RequestAware,SessionAware,ApplicationAware).让相应的map注入
-		System.out.println("方案二");
+		//但是如果接口写在子类，代码量也会比较大，因此创建BaseAction
+		System.out.println("方案三：使用BaseAction");
 		request.put("categoryList", categoryService.query());
 		session.put("categoryList", categoryService.query());
 		application.put("categoryList", categoryService.query());
 		return "index";
 	}
-	private Map<String,Object> request;
-	private Map<String,Object> session;
-	private Map<String,Object> application;
-	@Override
-	public void setApplication(Map<String, Object> application) {
-		// TODO Auto-generated method stub
-		this.application=application;
-	}
-	@Override
-	public void setSession(Map<String, Object> session) {
-		// TODO Auto-generated method stub
-		this.session=session;
-	}
-	@Override
-	public void setRequest(Map<String, Object> request) {
-		this.request=request;
-		
-	}
+	
 }
