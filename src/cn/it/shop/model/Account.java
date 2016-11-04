@@ -60,4 +60,10 @@ public class Account implements java.io.Serializable {
 		this.pass = pass;
 	}
 
+	@Override
+	public String toString() {
+		return "Account [id=" + id + ", login=" + login + ", name=" + name
+				+ ", pass=" + pass + "]";
+	}
+
 }

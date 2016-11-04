@@ -11,8 +11,7 @@
 		<property name="accountService" ref="accountService"/>
 	</bean>
 
-	<bean id="categoryAction" class="cn.it.shop.action.CategoryAction" scope="prototype" parent="baseAction">
-	
-	</bean>
+	<bean id="categoryAction" class="cn.it.shop.action.CategoryAction" scope="prototype" parent="baseAction"/>
+	<bean id="accountAction" class="cn.it.shop.action.AccountAction" scope="prototype" parent="baseAction"/>
 	
 </beans>
