@@ -17,7 +17,7 @@ public class CategoryServiceImpl extends BaseServiceImpl<Category> implements Ca
 	public CategoryServiceImpl(){
 		super();
 	}
-	public static void main(String[] args) {
-		new CategoryServiceImpl();
-	}
+//	public static void main(String[] args) {
+//		new CategoryServiceImpl();
+//	}
 }
