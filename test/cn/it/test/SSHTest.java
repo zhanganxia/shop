@@ -33,6 +33,6 @@ public class SSHTest {
 	}
 	@Test//测试Hibernate和Spring整合后
 	public void hibernateAndSpring(){
-		categoryService.update(new Category(1, "女士休闲",true));//categoryService通过Spring从上面注入进来
+		categoryService.update(new Category(2, "儿童休闲",true));//categoryService通过Spring从上面注入进来
 	}
 }
