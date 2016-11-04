@@ -9,38 +9,55 @@ import org.apache.struts2.interceptor.SessionAware;
 import cn.it.shop.model.Category;
 import cn.it.shop.service.CategoryService;
 
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
-
-public class CategoryAction extends BaseAction{
-	public CategoryAction(){
-		System.out.println("---CategoryAction----");
-	}
-	private Category category;//设置一个私有成员变量接收url带过来的参数，注意写好get&&set方法
+import com.opensymphony.xwork2.ModelDriven;
+/*
+ * OGNL表达式语法：通过根对象，从上向下查找，如果名称正确则查找成功，赋值后返回，否则继续向下查找，直到找到为止
+ * OgnlValueStack:root是栈结构，可以实现后进先出
+ * 拦截器：modelDriven
+ * ModelDriven:此接口必须要实现getModel()方法，此方法会把返回的对象，压到栈顶中
+ */
+public class CategoryAction extends BaseAction implements ModelDriven<Category>{
 	
-	public Category getCategory() {
+	private Category category;
+	@Override
+	public Category getModel() {
+		category =new Category();
 		return category;
 	}
-	public void setCategory(Category category) {
-		this.category = category;
-	}
-	private CategoryService categoryService;//设置CategoryService是为了很直观的看出与Spring整合前后的不同
+	private CategoryService categoryService;
+	
 	public void  setCategoryService(CategoryService categoryService){
 		this.categoryService=categoryService;
 	}
+//	private Integer id;
+	
+//	private Integer id1;
+//	public void setId1(Integer id1) {
+//		this.id1 = id1;
+//	}
+	
+	
 	public String update(){
+		//System.out.println(ActionContext.getContext().getValueStack().getRoot());
+		System.out.println("-- update--");
+		categoryService.update(category);
+		return "index";
 		//值栈
 		//ActionContext.getContext().getValueStack().push();
-		System.out.println("-- update--");
-		System.out.println(categoryService);//整合前后输出不同
-		categoryService.update(category);//新加一条语句，来跟新数据库
-		return "index";
+	//	System.out.println(id);//不可对Id赋值，因为开始找到id就返回了
+	//	System.out.println(id1);//id1可以赋值
+		//categoryService.update(category);//新加一条语句，来跟新数据库
+		
 	}
 	public String save(){
 		System.out.println("-- save--");
-		System.out.println(categoryService);
 		return "index";
 	}
 	public String query(){
+		//显示值栈中的root对象
+		System.out.println(ActionContext.getContext().getValueStack().getRoot());
 		//方案一,采用相应的map取代原来的内置对象，这样与jsp没有依赖，但是代码量较大
 //		ActionContext.getContext().put("categoryList", categoryService.query());//放到ruquest域中
 //		ActionContext.getContext().getSession().put("categoryList", categoryService.query());//放到session域中
@@ -54,5 +71,5 @@ public class CategoryAction extends BaseAction{
 		application.put("categoryList", categoryService.query());
 		return "index";
 	}
-	
+
 }

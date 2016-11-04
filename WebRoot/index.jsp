@@ -7,6 +7,7 @@
   </head>
   
   <body>
+  	   <a href="${pageContext.request.contextPath}/category_update.action?id=2&type=gg&hot=false">ModelDriven测试</a>
 	   <a href="${pageContext.request.contextPath}/category_update.action?category.id=2&category.type=gg&category.hot=false">访问update SSH环境</a>
 	   <a href="category_save.action">访问save，测试Spring与Struts环境</a>
 	   <a href="category_query.action">查询所有类别</a><br/>
