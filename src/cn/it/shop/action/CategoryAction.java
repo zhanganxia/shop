@@ -18,31 +18,17 @@ import com.opensymphony.xwork2.ModelDriven;
  * 拦截器：modelDriven
  * ModelDriven:此接口必须要实现getModel()方法，此方法会把返回的对象，压到栈顶中
  */
-public class CategoryAction extends BaseAction implements ModelDriven<Category>{
+public class CategoryAction extends BaseAction<Category>{
 	
-	private Category category;
-	@Override
-	public Category getModel() {
-		category =new Category();
-		return category;
-	}
 	private CategoryService categoryService;
 	
 	public void  setCategoryService(CategoryService categoryService){
 		this.categoryService=categoryService;
 	}
-//	private Integer id;
-	
-//	private Integer id1;
-//	public void setId1(Integer id1) {
-//		this.id1 = id1;
-//	}
-	
-	
 	public String update(){
 		//System.out.println(ActionContext.getContext().getValueStack().getRoot());
 		System.out.println("-- update--");
-		categoryService.update(category);
+		categoryService.update(model);//直接使用model
 		return "index";
 		//值栈
 		//ActionContext.getContext().getValueStack().push();
@@ -53,6 +39,7 @@ public class CategoryAction extends BaseAction implements ModelDriven<Category>{
 	}
 	public String save(){
 		System.out.println("-- save--");
+		categoryService.update(model);//直接使用model
 		return "index";
 	}
 	public String query(){

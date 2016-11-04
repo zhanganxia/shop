@@ -31,8 +31,10 @@ import com.opensymphony.xwork2.ModelDriven;
 			}
  *
  */
-public class BaseAction<T> extends ActionSupport implements RequestAware,SessionAware,ApplicationAware{
+public class BaseAction<T> extends ActionSupport implements RequestAware,SessionAware,ApplicationAware,ModelDriven<T>{
 
+	protected T model;
+	
 
 //	protected AccountService accountService;
 //	
@@ -57,5 +59,16 @@ public class BaseAction<T> extends ActionSupport implements RequestAware,Session
 	public void setRequest(Map<String, Object> request) {
 		this.request=request;
 		
+	}
+	@Override
+	public T getModel() {//这里通过解析传进来的T来new一个对应的instance
+		ParameterizedType type=(ParameterizedType)this.getClass().getGenericSuperclass();
+		Class clazz=(Class)type.getActualTypeArguments()[0];
+		try {
+			model=(T)clazz.newInstance();
+		}catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+		return model;
 	}
 }
