@@ -1,10 +1,9 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <html>
   <head> 
-   	<%@ include file="/public/head.jspf"%>
+		<%@ include file="/public/head.jspf"%>
   </head>
-  
   <body>
-  	 right.jsp
+	类别管理
   </body>
 </html>
