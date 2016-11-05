@@ -11,10 +11,16 @@ public class Category implements java.io.Serializable {
 	private Integer id;
 	private String type;
 	private Boolean hot;
+	private Account account;
+	
+	public Account getAccount() {
+		return account;
+	}
 
-	// Constructors
+	public void setAccount(Account account) {
+		this.account = account;
+	}
 
-	/** default constructor */
 	public Category() {
 	}
 

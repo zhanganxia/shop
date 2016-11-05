@@ -43,6 +43,11 @@ public class CategoryServiceImplTest {
 	public void testDelete() {
 		categoryService.delete(3);
 	}
-
-
+	@Test
+	public void queryJoinAccount() {
+		for(Category temp:categoryService.queryJoinAccount("")){
+			System.out.println(temp);
+			System.out.println(temp.getAccount());
+		}
+	}
 }

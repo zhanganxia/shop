@@ -13,12 +13,17 @@ import cn.it.shop.util.HibernateSessionFactory;
  * 模块自身的业务逻辑
  */
 @Service("categoryService")
+@SuppressWarnings("unchecked")
 public class CategoryServiceImpl extends BaseServiceImpl<Category> implements CategoryService {
 	//查询热点类别
 	public CategoryServiceImpl(){
 		super();
 	}
-//	public static void main(String[] args) {
-//		new CategoryServiceImpl();
-//	}
+	
+	@Override
+	public List<Category> queryJoinAccount(String type) {
+		return getSession().createQuery("FROM Category c WHERE c.type LIKE:type")
+		.setString("type", "%"+type+"%")
+		.list();
+	}
 }
