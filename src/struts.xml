@@ -2,6 +2,10 @@
 <!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
 <struts>
 	<package name="shop" extends="struts-default">
+	
+	<global-results>
+		<result name="aindex">/WEB-INF/main/aindex.jsp</result>
+	</global-results>
 	<!-- category_update.action：访问update方法 -->
 	<!-- category_save.action -->
 	<!-- class对应的是Spring中配置该Action的id值，因为要交给Spring来管理 -->
@@ -10,6 +14,10 @@
 		</action>
 		<action name="account_*" class="accountAction" method="{1}">
 			<result name="index">/index.jsp</result>
+		</action>
+		<!-- 用来完成系统请求转发的Action,所有的请求交给execute -->
+		<action name="send_*_*" class="sendAction">
+			<result name="send">/WEB-INF/{1}/{2}.jsp</result>
 		</action>
 	</package>
 </struts>    

@@ -8,5 +8,7 @@ public class AccountAction extends BaseAction<Account>{
 		System.out.println(model);
 		return "index";
 	}
-
+	public String aindex(){
+		return "aindex";
+	}
 }
