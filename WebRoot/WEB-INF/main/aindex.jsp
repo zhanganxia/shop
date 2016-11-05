@@ -31,14 +31,26 @@
 		<script type="text/javascript">
 			$(function(){
 				$("a[title]").click(function(){
+					var text=$(this).text();
+					var href=$(this).attr("title");
 					//1.判断当前右边是否已有相应的tab
-					//2.如果没有则创建一个新的tab，否则切换
-					alert("---");
+					if($("#tt").tabs("exists",text)){
+						//2.如果没有则创建一个新的tab，否则切换
+						$("#tt").tabs("select",text);
+					}else{
+						$("#tt").tabs("add",{
+							title:text,
+							closable:true,
+							content:'<iframe src="send_category_query.action" frameborder="0" width="100%" heigth="100%" />'
+							//href:默认是通过url地址，加载远程的页面，但是仅仅是body部分
+							//href:'send_category_query.action'
+						});
+					}
 				});
 			});
 		</script>
 </head>
-	<body class="easyui-layout">   
+	<body class="easyui-layout"> 
 	    <div data-options="region:'north',title:'欢迎来到后台',split:true" style="height:100px;"></div>    
 	    <div data-options="region:'west',title:'系统操作'" style="width:200px;">
 		    <!-- 此处显示的是系统菜单 -->
