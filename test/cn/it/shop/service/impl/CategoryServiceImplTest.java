@@ -45,8 +45,8 @@ public class CategoryServiceImplTest {
 	}
 	@Test
 	public void queryJoinAccount() {
-		for(Category temp:categoryService.queryJoinAccount("")){
-			System.out.println(temp);
+		for(Category temp:categoryService.queryJoinAccount("",2,2)){
+			System.out.println(temp+","+temp.getAccount());
 			//System.out.println(temp.getAccount());
 		}
 	}
