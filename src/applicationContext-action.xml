@@ -6,14 +6,16 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd"
 	>
 <!--如果是prototype类型：则默认即使使用的时候在创建，不会启动的时候自动创建  -->
-	<bean id="baseAction" class="cn.it.shop.action.BaseAction" scope="prototype">
+	<!-- <bean id="baseAction" class="cn.it.shop.action.BaseAction" scope="prototype">
 		<property name="categoryService" ref="categoryService"/>
 		<property name="accountService" ref="accountService"/>
-	</bean>
+	</bean> 
 
 	<bean id="categoryAction" class="cn.it.shop.action.CategoryAction" scope="prototype" parent="baseAction"/>
 	<bean id="accountAction" class="cn.it.shop.action.AccountAction" scope="prototype" parent="baseAction"/>
-	<!-- 此Action没有用于数据的存储，也不需要调用业务逻辑因此单例即可 -->
+	-->
+	<!-- 此Action没有用于数据的存储，也不需要调用业务逻辑因此单例即可
 	<bean id="sendAction" class="cn.it.shop.action.SendAction"/>
+	 -->
 	
 </beans>
