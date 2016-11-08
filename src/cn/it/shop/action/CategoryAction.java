@@ -1,5 +1,7 @@
 package cn.it.shop.action;
 
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.apache.struts2.interceptor.ApplicationAware;
@@ -18,22 +20,17 @@ import com.opensymphony.xwork2.ModelDriven;
 @Controller
 @Scope("prototype")
 public class CategoryAction extends BaseAction<Category>{
-	
-	public String update(){
-		System.out.println(ActionContext.getContext().getValueStack().getRoot());
-		System.out.println("-- update--");
-		System.out.println(model);//直接使用model
-		return "index";
-	}
-	public String save(){
-		System.out.println("-- save--");
-		return "index";
-	}
-	public String query(){
-		request.put("categoryList", categoryService.query());
-		session.put("categoryList", categoryService.query());
-		application.put("categoryList", categoryService.query());
-		return "index";
-	}
 
+	public String queryJoinAccount(){
+		//用来存储分页的数据
+		pageMap=new HashMap<String, Object>();
+		System.out.println("type:" + model.getType());
+		//根据关键字和分页的参数查询相应的数据
+		List<Category> categoryList=categoryService.queryJoinAccount(model.getType(), page, rows);
+		pageMap.put("rows", categoryList);
+		//根据关键字查询总的记录数。
+		pageMap.put("total", categoryService.getCount(model.getType()));
+	
+		return "jsonMap";
+	}
 }

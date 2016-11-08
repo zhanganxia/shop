@@ -6,7 +6,8 @@
 			$(function(){
 				$('#dg').datagrid({    
 					//请求数据的URL地址
-				    url:'datagrid_data1.json',
+				    url:'category_queryJoinAccount.action',
+				    queryParams:{type:''},
 				    //width:250,
 				   //斑马线效果
 				    striped:true,
@@ -49,7 +50,7 @@
 				        styler: function(value,row,index){
 				        	console.info("val:"+value+",row:"+row+",index:"+index);
 							if (value < 60){
-								return 'background-color:#6293BB;color:red;';
+								return 'color:red;';
 								}
 							}
 				        }    

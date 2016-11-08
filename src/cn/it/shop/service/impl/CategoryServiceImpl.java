@@ -22,10 +22,19 @@ public class CategoryServiceImpl extends BaseServiceImpl<Category> implements Ca
 	
 	@Override
 	public List<Category> queryJoinAccount(String type,int page,int size) {
-		return getSession().createQuery("FROM Category c LEFT JOIN FETCH c.account WHERE c.type LIKE:type")
+		String hql="FROM Category c LEFT JOIN FETCH c.account WHERE c.type LIKE:type";
+		return getSession().createQuery(hql)
 		.setString("type", "%" +type+ "%")
 		.setFirstResult((page-1)*size)
 		.setMaxResults(size)
 		.list();
+	}
+
+	@Override
+	public Long getCount(String type) {
+		String hql="SELECT count(c) FROM Category c WHERE c.type LIKE:type";
+		return (Long)getSession().createQuery(hql)
+		.setString("type", "%"+type+"%")
+		.uniqueResult();
 	}
 }
