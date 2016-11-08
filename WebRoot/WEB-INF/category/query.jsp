@@ -46,6 +46,13 @@
 				        	}
 				        },    
 				        {field:'hot',title:'热点',width:100,align:'right',
+				        formatter: function(value,row,index){
+				        	if(value){
+				        		return "<input type='checkbox' checked='checked' disabled='disabled'/>";
+				        		}else{
+				        		return "<input type='checkbox' disabled='false'/>";
+				        		}
+				        	}
 				        /*设置当前单元格的样式，返回的字符串直接交给style属性
 				        styler: function(value,row,index){
 				        	console.info("val:"+value+",row:"+row+",index:"+index);
@@ -54,11 +61,18 @@
 								}
 							}*/
 				        },
-				          {field:'account.login',title:'所属管理员',width:100}    
+				       //jQuery不支持“account.***”的方式
+				      //   {field:'account.login',title:'所属管理员',width:100}  
+				      {field:'account.login',title:'所属管理员',width:100,
+				      		formatter: function(value,row,index){
+				      		if(row.account!=null&&row.account.login!=null){
+				      			return row.account.login;
+				      		}	
+				        }
+				      }  
 				    ]]    
 				});		
 			});
-
 		</script>
   </head>
   <body>

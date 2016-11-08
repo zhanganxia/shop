@@ -30,6 +30,15 @@
 			<result name="jsonMap" type="json">
 				<!-- 要转换成json格式的数据 -->
 				<param name="root">pageMap</param>
+				<!-- 配置 黑名单，过滤不需要的选项,支持正则表达式 
+				正则表达式：\d 一个数字   + 一个或多个    ？ 0或者1  *1或者多  [ABC]:自定义类型，必须是ABC其中的一个
+				[^] 取反     . 任意字符
+				{total:3,rows:[{account: {id: 1, login: "admin", name: "管理员", pass: "admin"}, hot: true, id: 1, type: "男士休闲"},…]}
+				-->
+				<param name="excludeProperties">
+					rows\[\d+\]\.account\.pass,
+					rows\[\d+\]\.account\.name,
+				</param>
 			</result>
 		</action>
 		<action name="account_*" class="accountAction" method="{1}">
