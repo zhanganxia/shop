@@ -13,6 +13,8 @@
 					//请求数据的URL地址
 				    url:'category_queryJoinAccount.action',
 				    queryParams:{type:''},
+				    //指定id字段为标识字段，在删除更新的时候有用，如果配置此字段，在翻页的时候被选中的记录是不会丢失
+				    idField:'id',
 				    //width:250,
 				   //斑马线效果
 				    striped:true,
@@ -21,7 +23,7 @@
 				    //自动适应列，如果设置此属性，则不会出现水平滚动条，在演示冻结列此参数不要设置
 				    fitColumns:true,
 				    //单行显示列：全选功能会失效
-				    singleSelect:true,
+				    singleSelect:false,
 				    //如果为true，则在DataGrid控件底部显示分页工具栏。
 				    pagination:true,
 				    pageSize:5,
@@ -33,32 +35,52 @@
 							alert('--自己实现--');
 							}
 					},'-',{
-					iconCls: 'icon-edit',
-					text:'更新类别',
-					handler: function(){
-						alert('跟新类别');
+						iconCls: 'icon-edit',
+						text:'更新类别',
+						handler: function(){
+							alert('跟新类别');
 						}
 					},'-',{
-					iconCls: 'icon-remove',
-					text:'删除类别',
-					handler: function(){
-						alert("删除类别");
+						iconCls: 'icon-remove',
+						text:'删除类别',
+						handler: function(){
+							//1.判断是否有选中行记录
+						var rows=$("#dg").datagrid("getSelections");
+						//rows返回被选中的行，没有任何行被选中，则返回空数组
+						if(rows.length==0){
+							//弹出提示信息
+							$.messager.show({
+								title:'错误提示',
+								msg:'至少选择一条记录',
+								timeout:2000,
+								showType:'slide'
+							});
+						}else{
+							//提示是否确认删除执行删除的逻辑
+							$.messager.confirm('删除确认对话框', '是否要选中删除的记录！', function(r){
+								if (r){
+								  //1:获取被选中的记录，然后从记录中获取相应的id
+								  var ids="";
+								  for(var i=0;i<rows.length;i++){
+								  	ids +=rows[i].id+",";
+								  }
+								  //2:拼接Id的值，然后发送后台1,2,3,4
+								  ids=ids.substring(0,ids.lastIndexOf(","));
+								  //3.发送ajax请求
+								  $.post("category_deleteByIds.action",{ids:ids},function(){
+								  		if(result=="true"){
+								  		alert("---删除成功----");
+								  		}else{
+								  		alert("----删除失败----");
+								  		}
+								  },"text");
+									}
+								});	
+							}
 						}
 					},'-',{
 						text:"<input id='ss' name='search'/>"
 					}],
-				    
-				   /*
-				    rowStyler:function(index,row){
-				    		//返回的字符默认交给style
-							if(index%2==0){
-							//return 'background-color:#6293BB;color:#ff0000;';
-							return 'background-color:#ff0000;';
-							}else{
-							return 'background-color:#00ff00;';
-							
-							}
-						},*/
 				    
 				    //同列属性，但是这些列将会被冻结在左侧。
 				    frozenColumns:[[
@@ -82,16 +104,7 @@
 				        		return "<input type='checkbox' disabled='false'/>";
 				        		}
 				        	}
-				        /*设置当前单元格的样式，返回的字符串直接交给style属性
-				        styler: function(value,row,index){
-				        	console.info("val:"+value+",row:"+row+",index:"+index);
-							if (value < 60){
-								return 'color:red;';
-								}
-							}*/
-				        },
-				       //jQuery不支持“account.***”的方式
-				      //   {field:'account.login',title:'所属管理员',width:100}  
+				        }, 
 				      {field:'account.login',title:'所属管理员',width:100,
 				      		formatter: function(value,row,index){
 				      		if(row.account!=null&&row.account.login!=null){
