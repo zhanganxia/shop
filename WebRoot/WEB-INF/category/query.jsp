@@ -38,8 +38,21 @@
 				    ]], 
 				    //配置dg的列字段  field：列字段名称，与json的key捆绑title：列标签
 				    columns:[[     
-				        {field:'productname',title:'产品的名称',width:100},    
-				        {field:'unitcost',title:'Price',width:100,align:'right'}    
+				        {field:'productname',title:'产品的名称',width:100,
+				        //用来格式化当前列的值，返回的是最终的数据。
+				        	formatter: function(value,row,index){
+				        		return "<span title=" + value + ">" + value + "</span>";
+				        	}
+				        },    
+				        {field:'unitcost',title:'Price',width:100,align:'right',
+				        //设置当前单元格的样式，返回的字符串直接交给style属性
+				        styler: function(value,row,index){
+				        	console.info("val:"+value+",row:"+row+",index:"+index);
+							if (value < 60){
+								return 'background-color:#6293BB;color:red;';
+								}
+							}
+				        }    
 				    ]]    
 				});		
 			});
