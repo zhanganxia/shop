@@ -35,7 +35,7 @@
 					var href=$(this).attr("title");
 					//1.判断当前右边是否已有相应的tab
 					if($("#tt").tabs("exists",text)){
-						//2.如果没有则创建一个新的tab，否则切换
+						//2.如果没有则创建一个新的tab，否则切换 
 						$("#tt").tabs("select",text);
 					}else{
 						$("#tt").tabs("add",{
