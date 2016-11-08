@@ -41,7 +41,7 @@
 						$("#tt").tabs("add",{
 							title:text,
 							closable:true,
-							content:'<iframe src="send_category_query.action" frameborder="0" width="100%" heigth="100%"/>'
+							content:'<iframe title="类别管理" src="send_category_query.action" frameborder="0" width="100%" heigth="100%"/>'
 							//href:默认是通过url地址，加载远程的页面，但是仅仅是body部分
 							//href:'send_category_query.action'
 						});

@@ -27,7 +27,10 @@
 					success: function(){
 						// 如果提交成功则关闭当前窗体
 						parent.$("#win").window("close");
-						//刷新页面
+						//刷新页面，获取aindex--->ifream-->dg  dom--->jquery--->easyui越往上兼容性问题越多
+						//datagrid与谷歌浏览器不兼容，一般向下强转
+						//var dg=parent.$("iframe[title='类别管理']").contents().find("#dg").datagrid("reload");
+						var dg=parent.$("iframe[title='类别管理']").get(0).contentWindow.$("#dg").datagrid("reload");
 							}
 						});
 					}
