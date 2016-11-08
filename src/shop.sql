@@ -45,10 +45,11 @@ create table category
 /*插入测试用例*/
 INSERT INTO account(login,name,pass) values ('admin','管理员','admin');
 INSERT INTO account(login,name,pass) values ('user','客服A','user');
+INSERT INTO account(login,name,pass) values ('user2','客服B','user2');
 
 INSERT INTO category(type,hot,aid) VALUES ('男士休闲',true,1);
-INSERT INTO category(type,hot,aid) VALUES ('女士休闲',true,1);
-INSERT INTO category(type,hot,aid) VALUES ('儿童休闲',true,2);
+INSERT INTO category(type,hot,aid) VALUES ('女士休闲',true,2);
+INSERT INTO category(type,hot,aid) VALUES ('儿童休闲',true,3);
 
 SELECT * FROM account;
 SELECT * FROM category;

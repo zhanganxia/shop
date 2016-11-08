@@ -2,6 +2,11 @@
 <html>
   <head> 
 		<%@ include file="/public/head.jspf"%>
+		<style type="text/css">
+			body{
+				margin:1px;
+			}
+		</style>
 		<script type="text/javascript">
 			$(function(){
 				$('#dg').datagrid({    
@@ -19,6 +24,30 @@
 				    singleSelect:true,
 				    //如果为true，则在DataGrid控件底部显示分页工具栏。
 				    pagination:true,
+				    pageSize:5,
+				    pageList:[5,10,15,20],
+				    toolbar: [{
+						iconCls: 'icon-add',
+						text:'添加类别',
+						handler: function(){
+							alert('--自己实现--');
+							}
+					},'-',{
+					iconCls: 'icon-edit',
+					text:'更新类别',
+					handler: function(){
+						alert('跟新类别');
+						}
+					},'-',{
+					iconCls: 'icon-remove',
+					text:'删除类别',
+					handler: function(){
+						alert("删除类别");
+						}
+					},'-',{
+						text:"<input id='ss' name='search'/>"
+					}],
+				    
 				   /*
 				    rowStyler:function(index,row){
 				    		//返回的字符默认交给style
@@ -71,7 +100,17 @@
 				        }
 				      }  
 				    ]]    
-				});		
+				});
+				//把普通的文本框转化为搜索文本框
+				$('#ss').searchbox({ 
+					//触发查询事件
+					searcher:function(value,name){
+						//获取当前查询的关键字 
+						//alert(value + "," + name); 
+					$('#dg').datagrid('load',{type: value,});
+					}, 
+					prompt:'变形金刚' 
+				}); 		
 			});
 		</script>
   </head>
