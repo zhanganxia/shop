@@ -1,5 +1,6 @@
 package cn.it.shop.action;
 
+import java.io.ByteArrayInputStream;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -32,5 +33,11 @@ public class CategoryAction extends BaseAction<Category>{
 		pageMap.put("total", categoryService.getCount(model.getType()));
 	
 		return "jsonMap";
+	}
+	public String deleteByIds(){
+		System.out.println("删除id为："+ids);
+		categoryService.deleteByIds(ids);
+		inputStream=new ByteArrayInputStream("true".getBytes());
+		return "stream";
 	}
 }

@@ -1,5 +1,6 @@
 package cn.it.shop.action;
 
+import java.io.InputStream;
 import java.lang.reflect.ParameterizedType;
 import java.util.Map;
 
@@ -23,13 +24,20 @@ import com.opensymphony.xwork2.ModelDriven;
 public class BaseAction<T> extends ActionSupport implements RequestAware,SessionAware,ApplicationAware,ModelDriven<T>{
 
 	protected T model;
+	//获取要删除的ids数组
+	protected String ids;
 	
 	protected Integer page;
 	
 	protected Integer rows;
 	
 	protected Map<String,Object> pageMap=null;
-
+	
+	protected InputStream inputStream;
+	
+	public InputStream getInputStream() {
+		return inputStream;
+	}
 	public Map<String, Object> getPageMap() {
 		return pageMap;
 	}
@@ -79,7 +87,13 @@ public class BaseAction<T> extends ActionSupport implements RequestAware,Session
 	}
 	@Override
 	public void setRequest(Map<String, Object> request) {
-		this.request=request;
-		
+		this.request=request;	
 	}
+	public String getIds() {
+		return ids;
+	}
+	public void setIds(String ids) {
+		this.ids = ids;
+	}
+	
 }
