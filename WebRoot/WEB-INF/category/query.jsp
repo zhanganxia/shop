@@ -6,6 +6,9 @@
 			body{
 				margin:1px;
 			}
+			.searchbox {
+			  margin:-3;
+			}
 		</style>
 		<script type="text/javascript">
 			$(function(){
@@ -32,13 +35,18 @@
 						iconCls: 'icon-add',
 						text:'添加类别',
 						handler: function(){
-							alert('--自己实现--');
+							parent.$("#win").window({
+							title:'添加类别',
+							width:280,
+							height:200,
+							content:'<iframe src="send_category_save.action" frameboder="0" width="100%" height="100%">'
+							});
 							}
 					},'-',{
 						iconCls: 'icon-edit',
 						text:'更新类别',
 						handler: function(){
-							alert('跟新类别');
+							alert('更新类别');
 						}
 					},'-',{
 						iconCls: 'icon-remove',

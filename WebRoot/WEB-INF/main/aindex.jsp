@@ -41,7 +41,7 @@
 						$("#tt").tabs("add",{
 							title:text,
 							closable:true,
-							content:'<iframe src="send_category_query.action" frameborder="0" width="100%" heigth="100%" />'
+							content:'<iframe src="send_category_query.action" frameborder="0" width="100%" heigth="100%"/>'
 							//href:默认是通过url地址，加载远程的页面，但是仅仅是body部分
 							//href:'send_category_query.action'
 						});
@@ -75,6 +75,7 @@
 	        		此处以后显示相应的系统信息   （当前系统的类型，包括当前项目的域名 硬件的相关配置，或者显示报表） 
 				</div>      
 			</div>  
-	    </div>   
+	    </div>
+	    <div id="win" data-options="collapsible:false,minimizable:false,maximizable:false,modal:true"></div>   
 	</body> 
 </html>
