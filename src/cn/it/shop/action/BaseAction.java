@@ -2,6 +2,7 @@ package cn.it.shop.action;
 
 import java.io.InputStream;
 import java.lang.reflect.ParameterizedType;
+import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
@@ -37,6 +38,11 @@ public class BaseAction<T> extends ActionSupport implements RequestAware,Session
 	
 	public InputStream getInputStream() {
 		return inputStream;
+	}
+	protected List<T> jsonList=null;
+	
+	public List<T> getJsonList() {
+		return jsonList;
 	}
 	public Map<String, Object> getPageMap() {
 		return pageMap;

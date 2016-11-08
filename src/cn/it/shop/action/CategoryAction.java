@@ -44,4 +44,8 @@ public class CategoryAction extends BaseAction<Category>{
 		System.out.println(model);
 		categoryService.save(model);
 	}
+	public void update(){
+		System.out.println(model);
+		categoryService.update(model);
+	}
 }

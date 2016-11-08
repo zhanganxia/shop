@@ -11,12 +11,23 @@
 			$(function(){
 			//iframe中的dg对象
 			var dg=parent.$("iframe[title='类别管理']").get(0).contentWindow.$("#dg");
+			//对管理员的下拉列表框进行远程加载
+			$('#cc').combobox({    
+			    url:'account_query.action',    
+			    valueField:'id',    
+			    textField:'login',
+			    panelHeight:'auto',
+			    panelWidth:120,
+			    Width:120,
+			    editable:false
+			});
 			//1.完成数据的回显
 			var rows=dg.datagrid("getSelections");
 			$('#ff').form('load',{
 				id:rows[0].id,
 				type:rows[0].type,
-				hot:rows[0].hot
+				hot:rows[0].hot,
+				'account.id':rows[0].account.id
 			});
 
 			$("input[name=type]").validatebox({
@@ -33,13 +44,10 @@
 				if($("#ff").form("validate")){
 				//调用submit方法，提交数据
 					$('#ff').form('submit', {
-						url:'category_save.action',
+						url:'category_update.action',
 						success: function(){
 							// 如果提交成功则关闭当前窗体
 							parent.$("#win").window("close");
-							//刷新页面，获取aindex--->ifream-->dg  dom--->jquery--->easyui越往上兼容性问题越多
-							//datagrid与谷歌浏览器不兼容，一般向下强转
-							//var dg=parent.$("iframe[title='类别管理']").contents().find("#dg").datagrid("reload");
 							 dg.datagrid("reload");
 								}
 						});
@@ -63,13 +71,17 @@
     </div>
     <div>   
         <label for="account">所属管理员：</label>   
-        <select id="cc" class="easyui-combobox" name="dept" style="width:200px;">   
+       <!--  基于Html代码的方式
+       <select id="cc" class="easyui-combobox" name="dept" style="width:200px;">   
 		    <option value="aa">aitem1</option>   
 		    <option>bitem2</option>   
 		    <option>bitem3</option>   
 		    <option>ditem4</option>   
 		    <option>eitem5</option>   
-		</select>  
+		</select>   -->
+		<!-- 远程加载管理员的数据 -->
+		<input id="cc" name="account.id"> 
+		
     </div>   
     <div>
     <a id="btn" href="#" class="easyui-linkbutton" data-options="iconCls:'icon-add'">添加类别</a>
