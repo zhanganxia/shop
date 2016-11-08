@@ -46,7 +46,25 @@
 						iconCls: 'icon-edit',
 						text:'更新类别',
 						handler: function(){
-							alert('更新类别');
+						//1.判断是否有选中行记录
+						var rows=$("#dg").datagrid("getSelections");
+						if(rows.length==0){
+							//弹出提示信息
+							$.messager.show({
+								title:'错误提示',
+								msg:'只能更新一条记录',
+								timeout:2000,
+								showType:'slide'
+							});
+						}else{
+							//1:弹出更新的页面，更新逻辑在新的页面
+							parent.$("#win").window({
+								title:'更新类别',
+								width:320,
+								height:250,
+								content:'<iframe src="send_category_update.action" frameboder="0" width="100%" height="100%">'
+								});
+							}
 						}
 					},'-',{
 						iconCls: 'icon-remove',
@@ -78,6 +96,8 @@
 								 
 								  $.post("category_deleteByIds.action",{ids:ids},function(result){
 								  		if(result == "true"){
+								  		//取消选中的所有行
+								  		$("#dg").datagrid("uncheckAll");
 								  		//重新刷新当前页
 								  		var rows=$("#dg").datagrid("reload");
 								  		}else{
