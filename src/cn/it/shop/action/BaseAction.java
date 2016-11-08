@@ -30,6 +30,9 @@ public class BaseAction<T> extends ActionSupport implements RequestAware,Session
 	
 	protected Map<String,Object> pageMap=null;
 
+	public Map<String, Object> getPageMap() {
+		return pageMap;
+	}
 	@Override
 	public T getModel() {//这里通过解析传进来的T来new一个对应的instance
 		ParameterizedType type=(ParameterizedType)this.getClass().getGenericSuperclass();
