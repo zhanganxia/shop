@@ -16,6 +16,7 @@ import org.springframework.stereotype.Controller;
 import cn.it.shop.model.Category;
 import cn.it.shop.service.AccountService;
 import cn.it.shop.service.CategoryService;
+import cn.it.shop.service.ProductService;
 
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
@@ -64,6 +65,9 @@ public class BaseAction<T> extends ActionSupport implements RequestAware,Session
 	@Resource
 	protected CategoryService categoryService;
 
+	@Resource
+	protected ProductService productService;
+	
 	protected Map<String,Object> request;
 	protected Map<String,Object> session;
 	protected Map<String,Object> application;

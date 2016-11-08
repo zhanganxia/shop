@@ -26,6 +26,7 @@
 		</property>
 		<mapping resource="cn/it/shop/model/Category.hbm.xml" />
 		<mapping resource="cn/it/shop/model/Account.hbm.xml" />
+		<mapping resource="cn/it/shop/model/Product.hbm.xml" />
 
 	</session-factory>
 

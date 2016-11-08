@@ -41,7 +41,7 @@
 						$("#tt").tabs("add",{
 							title:text,
 							closable:true,
-							content:'<iframe title="类别管理" src="send_category_query.action" frameborder="0" width="100%" heigth="100%"/>'
+							content:'<iframe title=' + text + ' src="send_category_query.action" frameborder="0" width="100%" heigth="100%"/>'
 							//href:默认是通过url地址，加载远程的页面，但是仅仅是body部分
 							//href:'send_category_query.action'
 						});
@@ -58,7 +58,7 @@
 				<div title="基本操作">
 					<ul>
 						<li><a herf="#" title="send_category_query.action">类别管理</a></li>
-						<li><a herf="#">商品管理</a></li>
+						<li><a herf="#" title="send_product_query.action">商品管理</a></li>
 					</ul>
 				</div>
 			<div title="后台操作">
