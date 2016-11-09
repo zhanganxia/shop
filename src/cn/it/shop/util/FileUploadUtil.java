@@ -1,11 +1,11 @@
 package cn.it.shop.util;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.UUID;
 
 import org.apache.commons.io.FilenameUtils;
 import org.aspectj.util.FileUtil;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import cn.it.shop.model.FileImage;
@@ -19,7 +19,9 @@ public class FileUploadUtil implements FileUpload {
 	
 	private String filePath="/WebRoot/image";
 	
+	@Value("#{prop.filePath}")
 	public void setFilePath(String filePath) {
+		System.out.println("filePath:"+filePath);
 		this.filePath = filePath;
 	}
 
