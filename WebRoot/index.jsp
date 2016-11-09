@@ -6,6 +6,5 @@
   
   <body>
   		<a href="send_main_aindex.action"> 直接到后台UI版本</a>
-  	
   </body>
 </html>

@@ -45,5 +45,7 @@
 		<!-- 通知+切面表达式。才是完整的事务切入路径 -->
 		<aop:advisor advice-ref="advice" pointcut-ref="pointcut"/>
 	</aop:config>
-	
+<bean class="cn.it.shop.util.FileUploadUtil">
+		<property name="filePath" value=""/> 
+</bean>
 </beans>

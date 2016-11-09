@@ -64,7 +64,7 @@
 				validType:"format['gif,jpg,jpng,png']"
 			});	
 			//当文件域内容发生变化时，则调用验证方法（默认是单击提交时调用验证）
-			$("input[name=upload]").change(function(){
+			$("input[name='fileImage.upload']").change(function(){
 				//验证文本框的内容是否有效
 				$(this).validatebox("validate");
 			});

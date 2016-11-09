@@ -27,13 +27,11 @@ public class ProductAction extends BaseAction<Product> {
 		return "jsonMap";
 	}
 
-	public void save() throws IOException{
-		//获取文件后缀名,FilenameUtils是一个工具类，代替SubString获得文件后缀名
-		String ext=FilenameUtils.getExtension(getFileImage().getFilename());
-		
-		//实现文件上传的功能，然后把生成唯一UUID文件名交给pic，然后商品数据入库
-		FileUtil.copyFile(getFileImage().getFile(),new File("c:/"+UUID.randomUUID().toString()+"."+ext));
-		
-		System.out.println(model);
+	public void save() throws Exception{
+		String pic=fileUpload.uploadFile(fileImage);
+		model.setPic(pic);
+		System.out.println(pic);
+		//商品信息入库
+		productService.save(model);
 	}
 }
