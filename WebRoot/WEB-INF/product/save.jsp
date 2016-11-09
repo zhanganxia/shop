@@ -29,7 +29,7 @@
 			            return false;    
 			        }, 
 			        //错误消息   
-			        message: '文件必须为：{0}' 
+			        message: '文件必须为:{0}' 
 			    }    
 			});
 		
