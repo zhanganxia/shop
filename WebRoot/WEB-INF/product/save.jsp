@@ -72,7 +72,32 @@
 				required:true,
 				missingMessage:'请输入商品简单描述'
 			});
+			//默认禁止验证功能
+			$("#ff").form("disableValidation");
+			$("#submit").click(function(){
+				//开启验证
+				$("#ff").form("enableValidation");
+				//如果验证成功，则提交数据
+				if($("#ff").form("validate")){
+				//调用submit方法，提交数据
+					$('#ff').form('submit', {
+						url:'product_save.action',
+						success: function(){
+							// 如果提交成功则关闭当前窗体
+							parent.$("#win").window("close");
+							var dg=parent.$("iframe[title='商品管理']").get(0).contentWindow.$("#dg");
+							dg.datagrid("reload");
+							}
+						});
+					}
+				});	
+			$("#reset").click(function(){
+				//重置当前表单数据
+				$("#ff").form("reset");
+			});						
 		});
+		
+		
 	</script>
 </head>
 

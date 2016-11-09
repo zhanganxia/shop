@@ -20,7 +20,9 @@ public class ProductAction extends BaseAction<Product> {
 		//根据关键字查询总的记录数。
 		pageMap.put("total", productService.getCount(model.getName()));
 		return "jsonMap";
-		
 	}
 
+	public void save(){
+		System.out.println(model);
+	}
 }
