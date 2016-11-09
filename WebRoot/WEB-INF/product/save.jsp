@@ -110,7 +110,7 @@
 		<label>商品价格:</label> <input type="text" name="price" />
 	</div>
 	<div>
-		<label>图片上传:</label> <input type="file" name="upload" />
+		<label>图片上传:</label> <input type="file" name="fileImage.upload" />
 	</div>
 	<div>
 		<label>所属类别：</label> 

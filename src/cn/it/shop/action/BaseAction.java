@@ -14,6 +14,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
 import cn.it.shop.model.Category;
+import cn.it.shop.model.FileImage;
 import cn.it.shop.service.AccountService;
 import cn.it.shop.service.CategoryService;
 import cn.it.shop.service.ProductService;
@@ -32,6 +33,8 @@ public class BaseAction<T> extends ActionSupport implements RequestAware,Session
 	protected Integer page;
 	
 	protected Integer rows;
+	
+	protected FileImage fileImage;
 	
 	protected Map<String,Object> pageMap=null;
 	
@@ -105,5 +108,10 @@ public class BaseAction<T> extends ActionSupport implements RequestAware,Session
 	public void setIds(String ids) {
 		this.ids = ids;
 	}
-	
+	public FileImage getFileImage() {
+		return fileImage;
+	}
+	public void setFileImage(FileImage fileImage) {
+		this.fileImage = fileImage;
+	}
 }
