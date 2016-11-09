@@ -23,7 +23,7 @@
   	<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
   </listener>
   <listener>
-  	<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+  	<listener-class>cn.it.shop.listener.InitDataListener</listener-class>
   </listener>
    <context-param>
   	<param-name>contextConfigLocation</param-name>
