@@ -35,7 +35,12 @@
 						iconCls: 'icon-add',
 						text:'添加商品',
 						handler: function(){
-
+							parent.$("#win").window({
+							title:'添加商品',
+							width:500,
+							height:600,
+							content:'<iframe src="send_product_save.action" frameboder="0" width="100%" height="100%">'
+							});
 							}
 					},'-',{
 						iconCls: 'icon-edit',

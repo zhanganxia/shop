@@ -52,6 +52,11 @@
 			<result name="jsonMap" type="json">
 				<!-- 要转换成json格式的数据 -->
 				<param name="root">pageMap</param>
+				<param name="excludeProperties">
+					<!-- rows[0].category.account,rows[0].date -->
+					rows\[\d+\]\.category\.account,
+					rows\[\d+\]\.date
+				</param>
 			</result>
 		</action>		
 		<!-- 用来完成系统请求转发的Action,所有的请求交给execute -->
