@@ -48,6 +48,12 @@
 				</param>
 			</result>
 		</action>
+		<action name="product_*" class="productAction" method="{1}">
+			<result name="jsonMap" type="json">
+				<!-- 要转换成json格式的数据 -->
+				<param name="root">pageMap</param>
+			</result>
+		</action>		
 		<!-- 用来完成系统请求转发的Action,所有的请求交给execute -->
 		<action name="send_*_*" class="sendAction">
 			<result name="send">/WEB-INF/{1}/{2}.jsp</result>
