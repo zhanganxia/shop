@@ -9,6 +9,21 @@
 			margin: 10px;
 		}
 	</style>
+	<script type="text/javascript">
+		$(function(){
+			$("input[name=name]").validatebox({
+				required:true,
+				missingMessage:'请输入商品名称'
+			});	
+			$("input[name=price]").numberbox({
+				required:true,
+				missingMessage:'请输入商品价格',
+				min:0,    
+    			precision:2,//保留两位小数
+    			prefix:'$'  //前缀
+			});	
+		});
+	</script>
 </head>
 
 <body>
