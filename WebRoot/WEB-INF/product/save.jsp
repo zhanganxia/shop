@@ -33,6 +33,19 @@
 			    }    
 			});
 		
+			//对所属类别下拉列表框进行远程加载
+			$('#cc').combobox({    
+			    url:'category_query.action',    
+			    valueField:'id',    
+			    textField:'type',
+			    panelHeight:'auto',
+			    panelWidth:120,
+			    Width:120,
+			    editable:false,
+				required:true,
+				missingMessage:'请选择所属类别'
+			});		
+		
 			$("input[name=name]").validatebox({
 				required:true,
 				missingMessage:'请输入商品名称'
@@ -55,6 +68,10 @@
 				//验证文本框的内容是否有效
 				$(this).validatebox("validate");
 			});
+			$("textarea[name=remark]").validatebox({
+				required:true,
+				missingMessage:'请输入商品简单描述'
+			});
 		});
 	</script>
 </head>
@@ -72,8 +89,7 @@
 	</div>
 	<div>
 		<label>所属类别：</label> 
-		<select id="cc" name="category.id">
-		</select>
+		<input id="cc" name="category.id" />
 	</div>
 	<div>
 		<label>加入推荐:</label> 
