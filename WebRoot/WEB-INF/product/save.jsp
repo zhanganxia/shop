@@ -11,6 +11,28 @@
 	</style>
 	<script type="text/javascript">
 		$(function(){
+		//自定义验证方法，向validatebox.defaults.rules中注册新函数
+			$.extend($.fn.validatebox.defaults.rules, {  
+				//函数的名称：函数的实现体  （又是一个json对象，里面包括函数的实现，和错误消息设置）
+			    format: {
+			    	//函数实现，如果返回为false,则验证失败    
+			        validator: function(value,param){  
+			        	//console.info(value+","+param.length);  
+			        	//获取当前文件的后缀名
+			        	var ext=value.substring(value.lastIndexOf('.')+1);
+			        	//获取支持的文件后缀名，然后比较即可
+			        	var arr=param[0].split(",");
+			        	for(var i=0;i<arr.length;i++){
+			        		if(ext==arr[i])
+			        		return true;
+			        	}
+			            return false;    
+			        }, 
+			        //错误消息   
+			        message: '文件必须为：{0}' 
+			    }    
+			});
+		
 			$("input[name=name]").validatebox({
 				required:true,
 				missingMessage:'请输入商品名称'
@@ -22,6 +44,17 @@
     			precision:2,//保留两位小数
     			prefix:'$'  //前缀
 			});	
+			$("input[name=upload]").validatebox({
+				required:true,
+				missingMessage:'请上传商品图片',
+				//设置自定义方法
+				validType:"format['gif,jpg,jpng,png']"
+			});	
+			//当文件域内容发生变化时，则调用验证方法（默认是单击提交时调用验证）
+			$("input[name=upload]").change(function(){
+				//验证文本框的内容是否有效
+				$(this).validatebox("validate");
+			});
 		});
 	</script>
 </head>
