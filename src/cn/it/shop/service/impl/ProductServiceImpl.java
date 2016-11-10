@@ -31,7 +31,7 @@ public class ProductServiceImpl extends BaseServiceImpl<Product> implements
 
 	@Override
 	public List<Product> queryByCid(int cid) {
-		String hql="FROM Product p WHERE p.commend=true AND p.open=true AND p.category.id=:cid ORDER BY p.date DESC";
+		String hql="FROM Product p JOIN FETCH p.category WHERE p.commend=true AND p.open=true AND p.category.id=:cid ORDER BY p.date DESC";
 		return getSession().createQuery(hql)//
 				.setInteger("cid", cid)//
 				.setFirstResult(0)//
