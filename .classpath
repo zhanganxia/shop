@@ -15,6 +15,7 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/spring-3.2-persistence"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/spring-3.2-web"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/json-lib-3.2.2"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/ehcache-1.2.3"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/mysql-connector-java-5.0.8-bin.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/struts-2.3"/>
 	<classpathentry kind="output" path="WebRoot/WEB-INF/classes"/>

@@ -27,11 +27,16 @@ public class ProductAction extends BaseAction<Product> {
 		return "jsonMap";
 	}
 
-	public void save() throws Exception{
+	public void save(){
 		String pic=fileUpload.uploadFile(fileImage);
 		model.setPic(pic);
 		System.out.println(pic);
 		//商品信息入库
 		productService.save(model);
+	}
+	
+	public String get(){
+		request.put("product", productService.get(model.getId()));
+		return "detail";
 	}
 }

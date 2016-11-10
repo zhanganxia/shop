@@ -152,7 +152,9 @@
 					<!-- 小循环开始 -->
   					<c:forEach items="${list}" var="product">
 	                    <li> 
-	                    	<a href="#" class="product_image"><img src="${shop}/image/${product.pic}" /></a>
+	                    	<a href="${shop}/product_get.action?id=${product.id}" class="product_image">
+	                    		<img src="${shop}/image/${product.pic}" />
+	                    	</a>
 	                        <div class="product_info">
 	                            <h3><a href="#">商品名称：${product.name}</a></h3>
 	                            <small>${product.remark}</small> </div>

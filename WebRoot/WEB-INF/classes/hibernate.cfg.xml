@@ -24,10 +24,14 @@
 		<property name="javax.persistence.validation.mode">
 			none
 		</property>
+		<!-- 配置二级缓存提供商，注意此处并不是jar包 -->
+		<property name="hibernate.cache.provider_class">org.hibernate.cache.EhCacheProvider</property>
 		<mapping resource="cn/it/shop/model/Category.hbm.xml" />
 		<mapping resource="cn/it/shop/model/Account.hbm.xml" />
 		<mapping resource="cn/it/shop/model/Product.hbm.xml" />
 
+		<!-- 配置哪些类支持缓存 -->
+		<class-cache usage="read-write" class="cn.it.shop.model.Product"/>
 	</session-factory>
 
 </hibernate-configuration>
