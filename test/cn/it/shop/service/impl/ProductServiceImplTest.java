@@ -30,4 +30,10 @@ public class ProductServiceImplTest {
 			System.out.println(JSONSerializer.toJSON(product));
 			}
 		}
+	@Test
+	public void queryByCid() {
+		for(Product product:productService.queryByCid(1)){
+			System.out.println(product);
+			}
+		}
 	}

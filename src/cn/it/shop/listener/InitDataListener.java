@@ -1,15 +1,17 @@
 package cn.it.shop.listener;
 
-import javax.annotation.Resource;
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.springframework.stereotype.Service;
-import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
+import cn.it.shop.model.Category;
+import cn.it.shop.model.Product;
+import cn.it.shop.service.CategoryService;
 import cn.it.shop.service.ProductService;
 
 /*
@@ -18,7 +20,9 @@ import cn.it.shop.service.ProductService;
 public class InitDataListener implements ServletContextListener {
 
 	private ProductService productService=null;
-	
+	private ApplicationContext context=null;
+	private CategoryService categoryService=null;
+
 	@Override
 	public void contextDestroyed(ServletContextEvent event) {
 		// 1.获取业务逻辑类查询商品信息
@@ -44,8 +48,16 @@ public class InitDataListener implements ServletContextListener {
 	System.out.println("productService:"+productService);*/
 	
 	//解决方案四：通过工具类加载即可
-		ApplicationContext context = WebApplicationContextUtils.getWebApplicationContext(event.getServletContext());
+		context = WebApplicationContextUtils.getWebApplicationContext(event.getServletContext());
+		categoryService=(CategoryService)context.getBean("categoryService");
 		productService=(ProductService)context.getBean("productService");
-		System.out.println("productService:"+productService);
+		List<List<Product>> bigList=new ArrayList<List<Product>>();
+		//查询出热点类别
+		for(Category category:categoryService.queryByHot(true)){
+			//根据热点类别获取推荐商品信息
+			bigList.add(productService.queryByCid(category.getId()));
+		}
+		//把查询的bigList交给application内置对象
+		event.getServletContext().setAttribute("bigList", bigList);
 	}
 }

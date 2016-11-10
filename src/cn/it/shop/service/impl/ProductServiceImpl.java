@@ -28,4 +28,14 @@ public class ProductServiceImpl extends BaseServiceImpl<Product> implements
 		.setString("name", "%"+name+"%")
 		.uniqueResult();
 	}
+
+	@Override
+	public List<Product> queryByCid(int cid) {
+		String hql="FROM Product p WHERE p.commend=true AND p.open=true AND p.category.id=:cid ORDER BY p.date DESC";
+		return getSession().createQuery(hql)//
+				.setInteger("cid", cid)//
+				.setFirstResult(0)//
+				.setMaxResults(4)//
+				.list();//
+	}
 }
