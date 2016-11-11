@@ -20,6 +20,7 @@ import cn.it.shop.service.CategoryService;
 import cn.it.shop.service.ForderService;
 import cn.it.shop.service.ProductService;
 import cn.it.shop.service.SorderService;
+import cn.it.shop.service.UserService;
 import cn.it.shop.util.FileUpload;
 
 import com.opensymphony.xwork2.ActionSupport;
@@ -79,6 +80,9 @@ public class BaseAction<T> extends ActionSupport implements RequestAware,Session
 	
 	@Resource
 	protected SorderService sorderService;
+	
+	@Resource
+	protected UserService userService;
 	
 	@Resource
 	protected FileUpload fileUpload;

@@ -117,7 +117,7 @@
 						<input type="text" name="pass" />
 					</div>
 					<div>
-						${requestScope.error}  
+						${sessionScope.error}  
 					</div>
 					<div>
 						<input type="submit" value="登陆" style="width:60px;height:30px" />

@@ -7,6 +7,8 @@
 	
 	<global-results>
 		<result name="aindex">/WEB-INF/main/aindex.jsp</result>
+		<result name="index">/index.jsp</result>
+		<result name="ulogin" type="redirect">/ulogin.jsp</result>
 	</global-results>
 	<!-- category_update.action：访问update方法 -->
 	<!-- category_save.action -->
@@ -61,7 +63,10 @@
 		</action>
 		
 		<action name="sorder_*" class="sorderAction" method="{1}">
-			<result name="showCar">/showCar.jsp</result>
+			<result name="showCar" type="redirect">/showCar.jsp</result>
+		</action>
+		<action name="user_*" class="userAction" method="{1}">
+			
 		</action>
 	</package>
 </struts>    

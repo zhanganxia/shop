@@ -62,7 +62,7 @@
             />     
     -->
     <defaultCache
-            maxElementsInMemory="1000"
+            maxElementsInMemory="10000"
             eternal="false"
             timeToIdleSeconds="60"
             timeToLiveSeconds="120"

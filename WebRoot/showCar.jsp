@@ -112,46 +112,28 @@
 						<th class="align_center" width="15%">小计</th>
 						<th class="align_center" width="10%">删除</th>
 					</tr>
-					<tr>
-						<td class="align_center"><a href="#" class="edit">20140501</a>
-						</td>
-						<td width="80px"><img src="images/cart1.jpg" width="80"
-							height="80" />
-						</td>
-						<td class="align_left"><a class="pr_name" href="#">2014新款碎花长裙</a>
-						</td>
-						<td class="align_center vline"><span class="price">￥49.90</span>
-						</td>
-						<td class="align_center vline">
-							<div class="wrap-input">
-								<input class="text" style="height: 20px;" value="1">		
-							</div>
-						</td>
-						<td class="align_center vline"><span class="price">￥49.90</span>
-						</td>
-						<td class="align_center vline"><a href="#" class="remove"></a>
-						</td>
-					</tr>
-					<tr>
-						<td class="align_center"><a href="#" class="edit">20140501</a>
-						</td>
-						<td width="80px"><img src="images/cart1.jpg" width="80"
-							height="80" />
-						</td>
-						<td class="align_left"><a class="pr_name" href="#">2014新款碎花长裙</a>
-						</td>
-						<td class="align_center vline"><span class="price">￥49.90</span>
-						</td>
-						<td class="align_center vline">
-							<div class="wrap-input">
-								<input class="text" style="height: 20px;" value="1">		
-							</div>
-						</td>
-						<td class="align_center vline"><span class="price">￥49.90</span>
-						</td>
-						<td class="align_center vline"><a href="#" class="remove"></a>
-						</td>
-					</tr>
+					<c:forEach items="${sessionScope.forder.sorderSet}" var="sorder">
+						<tr>
+							<td class="align_center"><a href="#" class="edit">${sorder.product.id}</a>
+							</td>
+							<td width="80px"><img src="${shop}/image/${sorder.product.pic}" width="80"
+								height="80" />
+							</td>
+							<td class="align_left"><a class="pr_name" href="#">${sorder.name}</a>
+							</td>
+							<td class="align_center vline"><span class="price">￥${sorder.price}</span>
+							</td>
+							<td class="align_center vline">
+								<div class="wrap-input">
+									<input class="text" style="height: 20px;" value="${sorder.number}">		
+								</div>
+							</td>
+							<td class="align_center vline"><span class="price">￥${sorder.price*sorder.number}</span>
+							</td>
+							<td class="align_center vline"><a href="#" class="remove"></a>
+							</td>
+						</tr>
+					</c:forEach>
 				</table>
 				<!-- 结算 -->
 				<div class="totals">
@@ -173,7 +155,7 @@
 							<tr>
 								<td width="60%" colspan="1" class="align_left total"><strong>总计</strong>
 								</td>
-								<td class="align_right" style=""><span class="total"><strong>￥109.00</strong>
+								<td class="align_right" style=""><span class="total"><strong>￥${sessionScope.forder.total}</strong>
 								</span>
 								</td>
 							</tr>
