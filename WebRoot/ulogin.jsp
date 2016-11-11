@@ -3,8 +3,11 @@
 <html>
 <head>
 	<%@include file="/public/head.jspf"%>
-	<link rel="stylesheet" href="${shop}/css/public.css" />
-	<link rel="stylesheet" href="${shop}/css/style.css" />
+	<style type="text/css">
+		#dd div{
+			padding: 5px;
+		}
+	</style>
 <body>
 	<div class="wrapper">
 		<div class="header">
@@ -25,11 +28,13 @@
 					<h1 class="logo clear fl">
 						<a href="index.html"> <img src="images/logo.png" /> </a>
 					</h1>
+					
 					<!-- 小购物车 -->
 					<div class="minicart">
 						<a class="minicart_link" href="#"> <span class="item">
-								<b>2</b> 件/ </span> <span class="price"> <b>￥199.80</b> </span> </a>
+					 </span></a>
 					</div>
+					
 					<!-- 小购物车结束 -->
 					<!-- 搜索框 -->
 					<div class="header_search">
@@ -101,103 +106,27 @@
 		<!--导航栏结束-->
 		<div class="section_container">
 			<!-- 购物车 -->
-			<div id="shopping_cart">
-				<div class="message success">我的购物车</div>
-				<table class="data-table cart-table" cellpadding="0" cellspacing="0">
-					<tr>
-						<th class="align_center" width="10%">商品编号</th>
-						<th class="align_left" width="35%" colspan="2">商品名称</th>
-						<th class="align_center" width="10%">销售价格</th>
-						<th class="align_center" width="20%">数量</th>
-						<th class="align_center" width="15%">小计</th>
-						<th class="align_center" width="10%">删除</th>
-					</tr>
-					<tr>
-						<td class="align_center"><a href="#" class="edit">20140501</a>
-						</td>
-						<td width="80px"><img src="images/cart1.jpg" width="80"
-							height="80" />
-						</td>
-						<td class="align_left"><a class="pr_name" href="#">2014新款碎花长裙</a>
-						</td>
-						<td class="align_center vline"><span class="price">￥49.90</span>
-						</td>
-						<td class="align_center vline">
-							<div class="wrap-input">
-								<input class="text" style="height: 20px;" value="1">		
-							</div>
-						</td>
-						<td class="align_center vline"><span class="price">￥49.90</span>
-						</td>
-						<td class="align_center vline"><a href="#" class="remove"></a>
-						</td>
-					</tr>
-					<tr>
-						<td class="align_center"><a href="#" class="edit">20140501</a>
-						</td>
-						<td width="80px"><img src="images/cart1.jpg" width="80"
-							height="80" />
-						</td>
-						<td class="align_left"><a class="pr_name" href="#">2014新款碎花长裙</a>
-						</td>
-						<td class="align_center vline"><span class="price">￥49.90</span>
-						</td>
-						<td class="align_center vline">
-							<div class="wrap-input">
-								<input class="text" style="height: 20px;" value="1">		
-							</div>
-						</td>
-						<td class="align_center vline"><span class="price">￥49.90</span>
-						</td>
-						<td class="align_center vline"><a href="#" class="remove"></a>
-						</td>
-					</tr>
-				</table>
-				<!-- 结算 -->
-				<div class="totals">
-					<table id="totals-table">
-						<tbody>
-							<tr>
-								<td width="60%" colspan="1" class="align_left"><strong>小计</strong>
-								</td>
-								<td class="align_right" style=""><strong><span
-										class="price">￥109.00</span>
-								</strong>
-								</td>
-							</tr>
-							<tr>
-								<td width="60%" colspan="1" class="align_left">运费</td>
-								<td class="align_right" style=""><span class="price">￥0.00</span>
-								</td>
-							</tr>
-							<tr>
-								<td width="60%" colspan="1" class="align_left total"><strong>总计</strong>
-								</td>
-								<td class="align_right" style=""><span class="total"><strong>￥109.00</strong>
-								</span>
-								</td>
-							</tr>
-						</tbody>
-					</table>
-					<div class="action_buttonbar">
-						<button type="button" title="" class="checkout fr"
-							style="background-color: #f38256;">
-							<font>
-							<a href="${shop}/user/confirm.jsp">订单确认</a>
-							</font>
-						</button>
-						<button type="button" title="" class=" fr">
-							<font><font>清空购物车</font>
-							</font>
-						</button>
-						<button type="button" title="" class="continue fr">
-							<font><font>继续购物</font>
-							</font>
-						</button>
-						<div style="clear:both"></div>
+			<div id="dd" class="action_buttonbar" style="text-align:center;">
+				<form method="post" action="${shop}/user_login.action">
+					<div>
+						<label for="login">账号:&nbsp;</label> 
+						<input type="text" name="login" />
 					</div>
-				</div>
+					<div>
+						<label for="pass">密码:&nbsp</label> 
+						<input type="text" name="pass" />
+					</div>
+					<div>
+						${requestScope.error}  
+					</div>
+					<div>
+						<input type="submit" value="登陆" style="width:60px;height:30px" />
+						<input type="button" value="注册" onclick="window.open('${shop}/index.jsp','_self')" style="width:60px;height:30px" />
+					</div>
+			   </form>
+			   <div style="clear:both"></div>
 			</div>
+		</div>
 			<!-- 导航栏结束 -->
 			<div class="footer_container">
 				<div class="footer">

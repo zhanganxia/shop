@@ -5,7 +5,7 @@
 	<%@ include file="/public/head.jspf"%>
   </head>
   <body>
-	<div id="abc"></div>
+	此页面完成用户配送信息的填写
 		
   </body>
 </html>
