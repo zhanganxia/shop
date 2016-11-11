@@ -41,7 +41,7 @@
         	步骤：如果是多对一，则通过子表中的外键，查找对应主表中的外键
         		如果是一对多，则通过主表中的主键，去查找子表中对应的外键
          -->
-        <set name="soderSet">
+        <set name="sorderSet">
         <!-- 代表的是外键 -->
         	<key>
         		<column name="fid"/>

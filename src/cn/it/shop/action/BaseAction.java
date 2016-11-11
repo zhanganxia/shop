@@ -17,6 +17,7 @@ import cn.it.shop.model.Category;
 import cn.it.shop.model.FileImage;
 import cn.it.shop.service.AccountService;
 import cn.it.shop.service.CategoryService;
+import cn.it.shop.service.ForderService;
 import cn.it.shop.service.ProductService;
 import cn.it.shop.util.FileUpload;
 
@@ -71,6 +72,9 @@ public class BaseAction<T> extends ActionSupport implements RequestAware,Session
 
 	@Resource
 	protected ProductService productService;
+	
+	@Resource
+	protected ForderService forderService;
 	
 	@Resource
 	protected FileUpload fileUpload;

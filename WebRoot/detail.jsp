@@ -317,7 +317,10 @@
                         </li>
                     </ul>
                     <div class="add_to_buttons">
-                        <button class="add_cart"><a href="#">加入购物车</a></button>
+                        <button class="add_cart">
+                        <a href="${shop}/sorder_addSorder.action?product.id=${product.id}">加入购物车</a>
+                        
+                        </button>
                     </div>
                 </div>
                 <!--详情右侧结束--> </div>
