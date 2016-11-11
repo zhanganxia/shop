@@ -14,6 +14,7 @@ import cn.it.shop.model.Sorder;
 public class SorderAction extends BaseAction<Sorder> {
 
 	public String addSorder(){
+		
 		//1:根据product.id获取相应的商品数据
 		Product product=productService.get(model.getProduct().getId());
 		
@@ -22,13 +23,10 @@ public class SorderAction extends BaseAction<Sorder> {
 			//创建新的购物车，存储到session中
 			session.put("forder", new Forder(new HashSet<Sorder>()));
 		}
-		//3：把商品信息转化为sorder,并且添加到购物车中（判断购物项是否重复）
-		model.setName(product.getName());
-		model.setNumber(1);
-		model.setPrice(product.getPrice());
-		model.setProduct(product);
-		Forder forder=(Forder)session.get("forder");
-		forder.getSorderSet().add(model);
+		Forder forder=(Forder) session.get("forder");
+		//3：新的购物车
+		forder=sorderService.addSorder(forder, product);
+		
 		//4:计算购物的总价格
 		forder.setTotal(forderService.cluTotal(forder));
 		//5.把新的购物车存储在session中

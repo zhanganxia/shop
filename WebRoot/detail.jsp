@@ -262,7 +262,7 @@
                         </li>
                         <li id="summary-price">
                             <div class="dt">折&nbsp;后&nbsp;价：</div>
-                            <div class="dd"> <strong class="p-price" id="jd-price">￥89.00</strong>
+                            <div class="dd"> <strong class="p-price" id="jd-price">￥${product.price}</strong>
                             </div>
                         </li>
                     </ul>

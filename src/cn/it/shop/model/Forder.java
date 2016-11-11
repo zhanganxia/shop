@@ -6,12 +6,16 @@ import java.util.Set;
 
 /**
  * Forder entity. @author MyEclipse Persistence Tools
+ * 容器的关闭并不会导致session的销毁
+ * 当对象存储到硬盘的时候，就需要实现序列化接口，序列化的功能就是添加了一个唯一的ID(类主键)
+ * 这样在反序列化(从硬盘又加载到内存)的时候就可以成功找到相应的对象
+ * 唯一的UID改变会导致反序列化失败
  */
 
 public class Forder implements java.io.Serializable {
 
-	// Fields
-
+	private static final long serialVersionUID = 1L;
+	
 	private Integer id;
 	private String name;
 	private String phone;
