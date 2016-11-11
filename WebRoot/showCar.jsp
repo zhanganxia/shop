@@ -165,7 +165,7 @@
 						<button type="button" title="" class="checkout fr"
 							style="background-color: #f38256;">
 							<font>
-							<a href="${shop}/user/confirm.jsp">订单确认</a>
+							<a href="${shop}/user/confirm.jsp?a=x&b=y">订单确认</a>
 							</font>
 						</button>
 						<button type="button" title="" class=" fr">

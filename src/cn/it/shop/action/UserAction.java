@@ -17,7 +17,13 @@ public class UserAction extends BaseAction<User> {
 		}else{
 			//登录成功，先存储到session，则根据情况返回相应的页面
 			session.put("user", model);
-			return "index";
+			//根据session中URL是否有值而决定页面的跳转
+			if(session.get("goURL")==null){
+				return "index";
+			}else{
+				//session.get("goURL").toString();-->user/confirm.jsp
+				return "goURL";
+			}
 		}
 	}
 }

@@ -26,6 +26,18 @@ public class UserFilter implements Filter {
 		HttpServletRequest req=(HttpServletRequest)request;
 		HttpServletResponse res=(HttpServletResponse)response;
 		if(req.getSession().getAttribute("user")==null){
+			//保存当前用户想要去的Url地址
+			//	System.out.println(req.getRealPath("/"));//自己的本地路径,跟请求无关
+			//	System.out.println(req.getServletPath());//我们想要的地址，没有工程名。/user/confirm.jsp
+			//	System.out.println(req.getContextPath());//工程名
+			//	System.out.println(req.getQueryString());//参数
+			String goURL=req.getServletPath();
+			String param=req.getQueryString();
+			if(param!=null){
+				goURL=goURL + "?" +param;
+			}	
+			//把当前客户要访问的地址，存储到session中
+			req.getSession().setAttribute("goURL", goURL);
 			//非法请求，跳转到登录页面
 			req.getSession().setAttribute("error", "非法请求，请登录！");
 			res.sendRedirect(req.getContextPath()+"/ulogin.jsp");
