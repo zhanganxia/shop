@@ -40,8 +40,15 @@
         <!-- 
         	步骤：如果是多对一，则通过子表中的外键，查找对应主表中的外键
         		如果是一对多，则通过主表中的主键，去查找子表中对应的外键
+        	查询有关：
+        			lazy="true"是否支持懒加载
+        	 		fetch="join"关联对象的抓取策略，为了提升性能此处不应该配置
+        	更新有关（广义上的更新：插入，删除，更新）：
+        			inverse="false" 反向指定谁来维护外键，建议为true,如果为false，则主表当前表，会多发update语句
+        			cascade="all" 是否支持级联操作，Hibernate中有独特级联插入	
+        		
          -->
-        <set name="sorderSet">
+        <set name="sorderSet" lazy="true" fetch="join" inverse="true" cascade="all">
         <!-- 代表的是外键 -->
         	<key>
         		<column name="fid"/>

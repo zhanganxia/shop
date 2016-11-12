@@ -17,10 +17,13 @@
             <column name="price" precision="8" />
         </property>
         <property name="number" type="java.lang.Integer">
-            <column name="number" not-null="true" />
+            <column name="number"/>
         </property>
 		<many-to-one name="product" class="Product">
 			<column name="pid"/>
+		</many-to-one>
+		<many-to-one name="forder" class="Forder">
+			<column name="fid"/>
 		</many-to-one>
     </class>
 </hibernate-mapping>

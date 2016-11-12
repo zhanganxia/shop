@@ -183,52 +183,52 @@ INSERT INTO category (type,hot,aid) VALUES ('老人休闲',false,2);
 
 /* 商品测试用例 */
 INSERT INTO product (name,price,pic,remark,xremark,commend,open,cid) VALUES 
-('圣得西服',2999.00,'test.jpg','这里是简单介绍','这里是详细介绍',true,true,1);
+('圣得西服',0.01,'test.jpg','这里是简单介绍','这里是详细介绍',true,true,1);
 
 INSERT INTO product (name,price,pic,remark,xremark,commend,open,cid) VALUES 
-('罗蒙西服',1999.00,'test.jpg','这里是简单介绍','这里是详细介绍',true,true,1);
+('罗蒙西服',0.01,'test.jpg','这里是简单介绍','这里是详细介绍',true,true,1);
 
 INSERT INTO product (name,price,pic,remark,xremark,commend,open,cid) VALUES 
-('衫衫西服',3999.00,'test.jpg','这里是简单介绍','这里是详细介绍',true,true,1);
+('衫衫西服',0.01,'test.jpg','这里是简单介绍','这里是详细介绍',true,true,1);
 
 INSERT INTO product (name,price,pic,remark,xremark,commend,open,cid) VALUES 
-('金利来西服',4999.00,'test.jpg','这里是简单介绍','这里是详细介绍',true,true,1);
+('金利来西服',0.01,'test.jpg','这里是简单介绍','这里是详细介绍',true,true,1);
 
 INSERT INTO product (name,price,pic,remark,xremark,commend,open,cid) VALUES 
-('韩版女装',199.00,'test.jpg','这里是简单介绍','这里是详细介绍',true,true,2);
+('韩版女装',0.01,'test.jpg','这里是简单介绍','这里是详细介绍',true,true,2);
 
 INSERT INTO product (name,price,pic,remark,xremark,commend,open,cid) VALUES 
-('雪地靴',299.00,'test.jpg','这里是简单介绍','这里是详细介绍',true,true,2);
+('雪地靴',0.01,'test.jpg','这里是简单介绍','这里是详细介绍',true,true,2);
 
 INSERT INTO product (name,price,pic,remark,xremark,commend,open,cid) VALUES 
-('欧版女装',3999.00,'test.jpg','这里是简单介绍','这里是详细介绍',true,true,2);
+('欧版女装',0.01,'test.jpg','这里是简单介绍','这里是详细介绍',true,true,2);
 
 INSERT INTO product (name,price,pic,remark,xremark,commend,open,cid) VALUES 
-('女款手套',4999.00,'test.jpg','这里是简单介绍','这里是详细介绍',true,true,2);
+('女款手套',0.01,'test.jpg','这里是简单介绍','这里是详细介绍',true,true,2);
 
 INSERT INTO product (name,price,pic,remark,xremark,commend,open,cid) VALUES 
-('佳能单反机',3998.00,'test.jpg','这里是简单介绍','这里是详细介绍',true,true,3);
+('佳能单反机',0.01,'test.jpg','这里是简单介绍','这里是详细介绍',true,true,3);
 
 INSERT INTO product (name,price,pic,remark,xremark,commend,open,cid) VALUES 
-('金士顿优盘',299.00,'test.jpg','这里是简单介绍','这里是详细介绍',true,true,3);
+('金士顿优盘',0.01,'test.jpg','这里是简单介绍','这里是详细介绍',true,true,3);
 
 INSERT INTO product (name,price,pic,remark,xremark,commend,open,cid) VALUES 
-('日立硬盘',599.00,'test.jpg','这里是简单介绍','这里是详细介绍',true,true,3);
+('日立硬盘',0.01,'test.jpg','这里是简单介绍','这里是详细介绍',true,true,3);
 
 INSERT INTO product (name,price,pic,remark,xremark,commend,open,cid) VALUES 
-('大水牛机箱',399.00,'test.jpg','这里是简单介绍','这里是详细介绍',true,true,3);
+('大水牛机箱',0.01,'test.jpg','这里是简单介绍','这里是详细介绍',true,true,3);
 
 INSERT INTO product (name,price,pic,remark,xremark,commend,open,cid) VALUES 
-('电脑桌',150.00,'test.jpg','这里是简单介绍','这里是详细介绍',true,true,4);
+('电脑桌',0.01,'test.jpg','这里是简单介绍','这里是详细介绍',true,true,4);
 
 INSERT INTO product (name,price,pic,remark,xremark,commend,open,cid) VALUES 
-('老板椅',199.00,'test.jpg','这里是简单介绍','这里是详细介绍',true,true,4);
+('老板椅',0.01,'test.jpg','这里是简单介绍','这里是详细介绍',true,true,4);
 
 INSERT INTO product (name,price,pic,remark,xremark,commend,open,cid) VALUES 
-('空调',3599.00,'test.jpg','这里是简单介绍','这里是详细介绍',true,true,4);
+('空调',0.01,'test.jpg','这里是简单介绍','这里是详细介绍',true,true,4);
 
 INSERT INTO product (name,price,pic,remark,xremark,commend,open,cid) VALUES 
-('电视',699.00,'test.jpg','这里是简单介绍','这里是详细介绍',true,true,4);
+('电视',0.01,'test.jpg','这里是简单介绍','这里是详细介绍',true,true,4);
 
 /* 用户测试用例 */
 INSERT INTO user (login,name,pass,sex,phone,email)

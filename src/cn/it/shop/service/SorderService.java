@@ -12,6 +12,6 @@ public interface SorderService extends BaseService<Sorder>{
 	//添加购物项，返回新的购物车
 	public Forder addSorder(Forder forder,Product product);
 	//把商品数据转化为Sorder
-	public Sorder productTSorder(Product product);
+	public Sorder productToSorder(Product product);
 	
 }

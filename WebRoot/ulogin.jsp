@@ -46,6 +46,7 @@
 				</div>
 			</div>
 		</div>
+		</div>
 		<!-- 头部结束 -->
 		<!-- 导航栏 -->
 		<div class="navigation_container">
@@ -110,11 +111,11 @@
 				<form method="post" action="${shop}/user_login.action">
 					<div>
 						<label for="login">账号:&nbsp;</label> 
-						<input type="text" name="login" />
+						<input type="text" name="login" value=user />
 					</div>
 					<div>
 						<label for="pass">密码:&nbsp</label> 
-						<input type="text" name="pass" />
+						<input type="text" name="pass" value=user />
 					</div>
 					<div>
 						${sessionScope.error}  

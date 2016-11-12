@@ -12,9 +12,14 @@ public class Status implements java.io.Serializable {
 	private String status;
 
 	// Constructors
-
+	
 	/** default constructor */
 	public Status() {
+	}
+
+	public Status(Integer id) {
+		super();
+		this.id = id;
 	}
 
 	/** full constructor */
