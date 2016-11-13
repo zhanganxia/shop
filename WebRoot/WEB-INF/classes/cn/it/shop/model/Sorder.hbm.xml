@@ -19,6 +19,9 @@
         <property name="number" type="java.lang.Integer">
             <column name="number"/>
         </property>
+        <property name="findex" type="java.lang.Integer">
+            <column name="findex"/>
+        </property>
 		<many-to-one name="product" class="Product">
 			<column name="pid"/>
 		</many-to-one>

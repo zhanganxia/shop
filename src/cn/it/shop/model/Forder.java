@@ -1,8 +1,9 @@
 package cn.it.shop.model;
 
 import java.sql.Timestamp;
-import java.util.HashSet;
-import java.util.Set;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Forder entity. @author MyEclipse Persistence Tools
@@ -26,22 +27,40 @@ public class Forder implements java.io.Serializable {
 	private String address;
 	private User user;
 	private Status status;
-	private Set<Sorder> sorderSet;
+	
+	private List<Sorder> sorderList=new ArrayList<Sorder>();
 
-	public Forder(Set<Sorder> sorderSet) {
+	public Forder(List<Sorder> sorderList) {
 		super();
-		this.sorderSet = sorderSet;
+		this.sorderList = sorderList;
 	}
 
-	public Set<Sorder> getSorderSet() {
-		return sorderSet;
+	public List<Sorder> getSorderList() {
+		return sorderList;
 	}
 
-	public void setSorderSet(Set<Sorder> sorderSet) {
-		this.sorderSet = sorderSet;
+	public void setSorderList(List<Sorder> sorderList) {
+		this.sorderList = sorderList;
 	}
 
 	public Forder() {
+	}
+	
+	public Forder(Integer id, String name, String phone, String remark,
+			Timestamp date, Double total, String post, String address,
+			User user, Status status, List<Sorder> sorderList) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.phone = phone;
+		this.remark = remark;
+		this.date = date;
+		this.total = total;
+		this.post = post;
+		this.address = address;
+		this.user = user;
+		this.status = status;
+		this.sorderList = sorderList;
 	}
 
 	/** minimal constructor */

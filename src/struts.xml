@@ -66,7 +66,7 @@
 			<result name="showCar" type="redirect">/showCar.jsp</result>
 		</action>
 		<action name="user_*" class="userAction" method="{1}">
-			<result name="goURL" type="redirect">${#session.goURL}</result>
+			<result name="goURL">${#session.goURL}</result>
 		</action>
 		<action name="forder_*" class="forderAction" method="{1}">
 			<result name="bank" type="redirect">/user/bank.jsp</result>

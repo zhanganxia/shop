@@ -25,16 +25,17 @@ public class UserFilter implements Filter {
 		// 判断当前session是否有用户信息
 		HttpServletRequest req=(HttpServletRequest)request;
 		HttpServletResponse res=(HttpServletResponse)response;
+		//判断当前session是否有用户信息
 		if(req.getSession().getAttribute("user")==null){
 			//保存当前用户想要去的Url地址
 			//	System.out.println(req.getRealPath("/"));//自己的本地路径,跟请求无关
-			//	System.out.println(req.getServletPath());//我们想要的地址，没有工程名。/user/confirm.jsp
+			//System.out.println("我们想要的地址是："+req.getServletPath());//我们想要的地址，没有工程名。/user/confirm.jsp
 			//	System.out.println(req.getContextPath());//工程名
 			//	System.out.println(req.getQueryString());//参数
 			String goURL=req.getServletPath();
 			String param=req.getQueryString();
-			if(param!=null){
-				goURL=goURL + "?" +param;
+			if(param != null){
+				goURL = goURL + "?" +param;//重新拼接好请求地址+ 参数
 			}	
 			//把当前客户要访问的地址，存储到session中
 			req.getSession().setAttribute("goURL", goURL);

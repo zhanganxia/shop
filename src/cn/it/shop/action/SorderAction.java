@@ -1,6 +1,6 @@
 package cn.it.shop.action;
 
-import java.util.HashSet;
+import java.util.ArrayList;
 
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
@@ -21,7 +21,7 @@ public class SorderAction extends BaseAction<Sorder> {
 		//2:判断当前session是否有购物车，如果没有则创建
 		if(session.get("forder")==null){
 			//创建新的购物车，存储到session中
-			session.put("forder", new Forder(new HashSet<Sorder>()));
+			session.put("forder", new Forder(new ArrayList<Sorder>()));
 		}
 		Forder forder=(Forder) session.get("forder");
 		//3：新的购物车

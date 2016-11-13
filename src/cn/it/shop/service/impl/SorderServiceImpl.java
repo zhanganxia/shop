@@ -17,7 +17,7 @@ public class SorderServiceImpl extends BaseServiceImpl<Sorder> implements
 		boolean isHave=false;
 		Sorder sorder=productToSorder(product);
 		//判断当前购物项是否重复，如果重复则添加数量即可
-		for(Sorder old:forder.getSorderSet()){
+		for(Sorder old:forder.getSorderList()){
 			if(old.getProduct().getId().equals(sorder.getProduct().getId())){
 				//购物项有重复，添加数量即可
 				old.setNumber(old.getNumber()+sorder.getNumber());
@@ -29,7 +29,7 @@ public class SorderServiceImpl extends BaseServiceImpl<Sorder> implements
 		if(!isHave){
 			//建立购物项目与购物车之间的关联，此时forder，id为null,但是在入库的时候是先入库购物车，在入库购物项，那时forder就有主键了
 			sorder.setForder(forder);
-			forder.getSorderSet().add(sorder);
+			forder.getSorderList().add(sorder);
 		}
 		return forder;
 	}

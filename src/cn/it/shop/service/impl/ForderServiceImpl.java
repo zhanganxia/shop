@@ -14,7 +14,7 @@ public class ForderServiceImpl extends BaseServiceImpl<Forder> implements
 	@Override
 	public double cluTotal(Forder forder) {
 		double total=0.0;
-		for(Sorder temp:forder.getSorderSet()){
+		for(Sorder temp:forder.getSorderList()){
 			total +=temp.getNumber()*temp.getPrice();
 		}
 		return total;

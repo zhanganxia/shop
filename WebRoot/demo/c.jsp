@@ -3,9 +3,7 @@
 <html>
   <head> 
 	<%@ include file="/public/head.jspf"%>
-	<%
-		response.setHeader("cache-control", "no-cache");
-	 %>
+
   </head>
   <body>
 	按“后退”按钮，测试b.jsp缓存效果

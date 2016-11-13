@@ -111,11 +111,11 @@
 				<form method="post" action="${shop}/user_login.action">
 					<div>
 						<label for="login">账号:&nbsp;</label> 
-						<input type="text" name="login" value=user />
+						<input type="text" name="login" />
 					</div>
 					<div>
 						<label for="pass">密码:&nbsp</label> 
-						<input type="text" name="pass" value=user />
+						<input type="text" name="pass" />
 					</div>
 					<div>
 						${sessionScope.error}  

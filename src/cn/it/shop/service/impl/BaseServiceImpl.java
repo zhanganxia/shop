@@ -10,6 +10,7 @@ import org.hibernate.SessionFactory;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 
+import cn.it.shop.model.Forder;
 import cn.it.shop.service.BaseService;
 /*
  * 公共模块的抽取
@@ -39,7 +40,10 @@ public class BaseServiceImpl<T> implements BaseService<T> {
 	}
 	@Override
 	public void save(T t) {
+		Forder forder=new Forder();
+		System.out.println("t的内容："+t);
 		getSession().save(t);
+		System.out.println("到不了这里："+t);
 	}
 	@Override
 	public void update(T t) {

@@ -31,6 +31,7 @@
         <property name="address" type="java.lang.String">
             <column name="address" length="200" />
         </property>
+        
         <many-to-one name="user" class="User">
         	<column name="uid"></column>
         </many-to-one>
@@ -48,12 +49,11 @@
         			cascade="all" 是否支持级联操作，Hibernate中有独特级联插入	
         		
          -->
-        <set name="sorderSet" lazy="true" fetch="join" inverse="true" cascade="all">
+        <list name="sorderList" lazy="true" inverse="false" cascade="all">
         <!-- 代表的是外键 -->
-        	<key>
-        		<column name="fid"/>
-        	</key>
+        	<key><column name="fid"/></key>
+        	<index column="findex" type="integer"></index>
         	<one-to-many class="Sorder"/>
-        </set>
+        </list>
     </class>
 </hibernate-mapping>

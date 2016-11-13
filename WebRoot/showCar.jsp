@@ -3,8 +3,6 @@
 <html>
 <head>
 	<%@include file="/public/head.jspf"%>
-	<link rel="stylesheet" href="${shop}/css/public.css" />
-	<link rel="stylesheet" href="${shop}/css/style.css" />
 <body>
 	<div class="wrapper">
 		<div class="header">
@@ -112,7 +110,7 @@
 						<th class="align_center" width="15%">小计</th>
 						<th class="align_center" width="10%">删除</th>
 					</tr>
-					<c:forEach items="${sessionScope.forder.sorderSet}" var="sorder">
+					<c:forEach items="${sessionScope.forder.sorderList}" var="sorder">
 						<tr>
 							<td class="align_center"><a href="#" class="edit">${sorder.product.id}</a>
 							</td>
@@ -162,11 +160,11 @@
 						</tbody>
 					</table>
 					<div class="action_buttonbar">
-						<button type="button" title="" class="checkout fr"
-							style="background-color: #f38256;">
-							<font>
-							<a href="${shop}/user/confirm.jsp">订单确认</a>
-							</font>
+							<font><a href="${shop}/user/confirm.jsp">
+									<button type="button" title="" class="checkout fr" style="background-color: #f38256;">
+										订单确认
+									</button>
+							</a></font>
 						</button>
 						<button type="button" title="" class=" fr">
 							<font><font>清空购物车</font>

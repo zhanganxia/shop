@@ -14,8 +14,18 @@ public class Sorder implements java.io.Serializable {
 	private Integer number;
 	private Product product;
 	private Forder forder;
+	private Integer findex;
+
 
 	// Constructors
+
+	public Integer getFindex() {
+		return findex;
+	}
+
+	public void setFindex(Integer findex) {
+		this.findex = findex;
+	}
 
 	public Forder getForder() {
 		return forder;
@@ -27,6 +37,17 @@ public class Sorder implements java.io.Serializable {
 
 	/** default constructor */
 	public Sorder() {
+	}
+	public Sorder(Integer id, String name, Double price, Integer number,
+			Product product, Forder forder, Integer findex) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.price = price;
+		this.number = number;
+		this.product = product;
+		this.forder = forder;
+		this.findex = findex;
 	}
 
 	/** minimal constructor */

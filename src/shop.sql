@@ -166,6 +166,8 @@ create table sorder
    pid                  int,
    /* 此订单项,所属的订单编号 */
    fid                  int,
+   /* 顺序 */
+   findex              int,
    /* 设置购物项编号为主键 */
    primary key (id)
 );
