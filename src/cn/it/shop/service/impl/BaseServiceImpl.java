@@ -40,10 +40,7 @@ public class BaseServiceImpl<T> implements BaseService<T> {
 	}
 	@Override
 	public void save(T t) {
-		Forder forder=new Forder();
-		System.out.println("t的内容："+t);
 		getSession().save(t);
-		System.out.println("到不了这里："+t);
 	}
 	@Override
 	public void update(T t) {

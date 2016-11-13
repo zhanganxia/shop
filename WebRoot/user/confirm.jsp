@@ -6,10 +6,10 @@
 	  <% response.setHeader("cache-control", "no-store"); %>	
   </head>
   <body>
-<%-- <c:if test="${empty sessionScope.forder.sorderList}">
+ <c:if test="${empty sessionScope.forder.sorderList}">
 	  		<!-- 如果购物车中的购物项为空，则跳转到首页 -->
 	  		<c:redirect url="/index.jsp"></c:redirect>
-	  </c:if>  --%>
+	  </c:if>  
   	 <div class="wrapper">
         <div class="header">
             <div class="header_container">
