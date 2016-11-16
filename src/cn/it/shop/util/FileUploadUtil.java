@@ -1,6 +1,7 @@
 package cn.it.shop.util;
 
 import java.io.File;
+import java.io.FilenameFilter;
 import java.util.UUID;
 
 import org.apache.commons.io.FilenameUtils;
@@ -14,15 +15,30 @@ import cn.it.shop.model.FileImage;
  * 用来实现文件上传的业务逻辑
  * 
  */
-@Component("FileUploadUtil")
+@Component("fileUpload")
 public class FileUploadUtil implements FileUpload {
 	
-	private String filePath="/WebRoot/image";
+	@Value("#{prop.basePath+prop.filePath}")
+	private String filePath;
 	
-	@Value("#{prop.filePath}")
-	public void setFilePath(String filePath) {
+	@Value("#{prop.basePath+prop.bankPath}")
+	private String bankPath;
+	
+	
+	/*public void setFilePath(String filePath) {
 		System.out.println("filePath:"+filePath);
 		this.filePath = filePath;
+	}*/
+	public String[] getBankImage(){
+		return new File(bankPath).list(new FilenameFilter(){
+
+			@Override
+			public boolean accept(File dir, String name) {
+				//通过后缀名来实现文件过滤效果
+				//System.out.println("dir:"+dir+",name:"+name);
+				return name.endsWith(".gif");
+			}	
+		});
 	}
 
 	//通过文件名获取扩展名
@@ -52,4 +68,19 @@ public class FileUploadUtil implements FileUpload {
 			fileImage.getFile().delete();
 		}
 	}
+	/*	public static void main(String[] args) {
+	String[] list=new File("D:\\bank").list(new FilenameFilter(){
+
+		@Override
+		public boolean accept(File dir, String name) {
+			//通过后缀名来实现文件过滤效果
+			System.out.println("dir:"+dir+",name:"+name);
+			return name.endsWith(".gif");
+		}	
+	});
+	for(String temp:list){
+		System.out.println(temp);
+	}
+}*/	
+	
 }

@@ -5,7 +5,12 @@
 	<%@ include file="/public/head.jspf"%>
   </head>
   <body>
-	当前页面为银行支付页面
-		
+  	<div>
+		<c:forEach items="${applicationScope.bankList}" var="bankImage"> 
+			<span>
+				<img src="${shop}/image/bank/${bankImage}" />
+			</span>
+		</c:forEach>
+	</div>	
   </body>
 </html>
