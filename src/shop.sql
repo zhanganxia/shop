@@ -146,7 +146,7 @@ create table forder
    primary key (id)
 );
 /* 修改自动增长的初始值 */
-ALTER TABLE forder AUTO_INCREMENT = 2013021801;
+ALTER TABLE forder AUTO_INCREMENT = 2017021891;
 
 /*=============================*/
 /* Table: 购物项表结构 		   */

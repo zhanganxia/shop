@@ -13,11 +13,11 @@ import org.apache.struts2.interceptor.SessionAware;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
-import cn.it.shop.model.Category;
 import cn.it.shop.model.FileImage;
 import cn.it.shop.service.AccountService;
 import cn.it.shop.service.CategoryService;
 import cn.it.shop.service.ForderService;
+import cn.it.shop.service.PayService;
 import cn.it.shop.service.ProductService;
 import cn.it.shop.service.SorderService;
 import cn.it.shop.service.UserService;
@@ -85,6 +85,9 @@ public class BaseAction<T> extends ActionSupport implements RequestAware,Session
 	
 	@Resource
 	protected UserService userService;
+	
+	@Resource
+	protected PayService payService;
 	
 	@Resource
 	protected FileUpload fileUpload;
