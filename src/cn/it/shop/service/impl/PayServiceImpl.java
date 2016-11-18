@@ -5,6 +5,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
+import cn.it.shop.model.BackData;
 import cn.it.shop.model.SendData;
 import cn.it.shop.service.PayService;
 import cn.it.shop.util.DigestUtil;
@@ -80,5 +81,31 @@ public class PayServiceImpl implements PayService {
 		request.put("pr_NeedResponse", sendData.getPr_NeedResponse());
 		request.put("hmac", DigestUtil.hmacSign(joinParam, key));
 		return request;
+	}
+	// 完成返回数据的追加
+	private String joinBackDataParam(BackData backData) {
+		// 追加字符串,为加密验证做准备
+		StringBuffer infoBuffer = new StringBuffer();
+		infoBuffer.append(backData.getP1_MerId());
+		infoBuffer.append(backData.getR0_Cmd());
+		infoBuffer.append(backData.getR1_Code());
+		infoBuffer.append(backData.getR2_TrxId());
+		infoBuffer.append(backData.getR3_Amt());
+		infoBuffer.append(backData.getR4_Cur());
+		infoBuffer.append(backData.getR5_Pid());
+		infoBuffer.append(backData.getR6_Order());
+		infoBuffer.append(backData.getR7_Uid());
+		infoBuffer.append(backData.getR8_MP());
+		infoBuffer.append(backData.getR9_BType());
+		return infoBuffer.toString();
+	}
+	
+	// 对返回来的数据进行加密,并且和传过来的密文进行比较,如果OK则说明数据没有被篡改
+	public boolean checkBackData(BackData backData){
+		String joinParam=this.joinBackDataParam(backData);
+		// 加密后得到自己的密文
+		String md5 = DigestUtil.hmacSign(joinParam.toString(),key);
+		// 密文和传过来密文比较
+		return md5.equals(backData.getHmac());
 	}
 }
