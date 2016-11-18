@@ -60,6 +60,10 @@ public class PayAction extends BaseAction<Object> implements ParameterAware{
 		System.out.println(backData);
 		boolean isOk=payService.checkBackData(backData);
 		if(isOk){
+			//1:更新订单状态
+			forderService.updateStatusById(2017021892,2);
+			//2.根据user的邮箱地址，发送邮箱地址，发送邮件
+			//3.发送手机短信
 			System.out.println("---success----");
 		}else{
 			System.out.println("----fail------");
