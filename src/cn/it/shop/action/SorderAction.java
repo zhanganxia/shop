@@ -1,5 +1,6 @@
 package cn.it.shop.action;
 
+import java.io.ByteArrayInputStream;
 import java.util.ArrayList;
 
 import org.springframework.context.annotation.Scope;
@@ -13,6 +14,19 @@ import cn.it.shop.model.Sorder;
 @Scope("prototype")
 public class SorderAction extends BaseAction<Sorder> {
 
+	//根据商品id更新商品类别
+	public String updateSorder(){
+		Forder forder=(Forder)session.get("forder");
+		forder=sorderService.updateSorder(model,forder);
+		//计算新的总价格
+		forder.setTotal(forderService.cluTotal(forder));
+		session.put("forder", forder);
+		//以流的形式返回新的总价格
+		inputStream=new ByteArrayInputStream(forder.getTotal().toString().getBytes());
+		System.out.println(inputStream);
+		return "stream";
+	}
+	
 	public String addSorder(){
 		
 		//1:根据product.id获取相应的商品数据

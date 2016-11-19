@@ -3,6 +3,26 @@
 <html>
 <head>
 	<%@include file="/public/head.jspf"%>
+	<script type="text/javascript">
+		$(function(){
+		//注册事件
+			$(".text").change(function(){
+			//2.验证数据的有效性,必须是自然数
+			var number=this.value;
+			if(!isNaN(number) && parseInt(number)==number && number>0){
+				//更新合法数据的值
+				$(this).attr("lang",number);
+				var pid=$(this).parents("tr:first").attr("lang");
+				//发送ajax请求，传输当前的数量与商品的id，返回的是总价格
+				$.post("sorder_updateSorder.action",{number:number,'product.id':pid},function(total){
+					alert(total);
+				},"text"); 
+			}else{
+				this.value=$(this).attr("lang");
+			}
+			});
+		});
+	</script>
 <body>
 	<div class="wrapper">
 		<div class="header">
@@ -111,7 +131,7 @@
 						<th class="align_center" width="10%">删除</th>
 					</tr>
 					<c:forEach items="${sessionScope.forder.sorderList}" var="sorder">
-						<tr>
+						<tr lang="${sorder.product.id}">
 							<td class="align_center"><a href="#" class="edit">${sorder.product.id}</a>
 							</td>
 							<td width="80px"><img src="${shop}/image/${sorder.product.pic}" width="80"
@@ -119,14 +139,15 @@
 							</td>
 							<td class="align_left"><a class="pr_name" href="#">${sorder.name}</a>
 							</td>
-							<td class="align_center vline"><span class="price">￥${sorder.price}</span>
+							<td class="align_center vline">
+								￥${sorder.price}
 							</td>
 							<td class="align_center vline">
-								<div class="wrap-input">
-									<input class="text" style="height: 20px;" value="${sorder.number}">		
-								</div>
+							<!-- 文本框 -->
+									<input class="text" style="height: 20px;" value="${sorder.number}" lang="${sorder.number}">		
 							</td>
-							<td class="align_center vline"><span class="price">￥${sorder.price*sorder.number}</span>
+							<td class="align_center vline">
+								￥${sorder.price*sorder.number}
 							</td>
 							<td class="align_center vline"><a href="#" class="remove"></a>
 							</td>

@@ -28,7 +28,6 @@
 		<property name="locations">
 			<array>
 				<value>classpath:conn.properties</value>
-				<value>classpath:public.properties</value>
 			</array>
 		</property>
 	</bean>
@@ -68,6 +67,8 @@
 		<aop:pointcut id="pointcut" expression="execution(* cn.it.shop.service.impl.*.*(..))"/>
 		<!-- 通知+切面表达式。才是完整的事务切入路径 -->
 		<aop:advisor advice-ref="advice" pointcut-ref="pointcut"/>
+		<!--连接了上面advice和上面的pointcut -->
+		<!-- 这里出现一个很奇怪的问题，aop:pintcut要写在aop:advisor上面，否则会报错 -->
 	</aop:config>
 <!-- <bean class="cn.it.shop.util.FileUploadUtil">
 		<property name="filePath" value=""/> 
