@@ -1,6 +1,6 @@
 package cn.it.shop.service.impl;
 
-import java.util.List;
+import java.math.BigDecimal;
 
 import org.springframework.stereotype.Service;
 
@@ -12,10 +12,11 @@ public class ForderServiceImpl extends BaseServiceImpl<Forder> implements
 		ForderService {
 
 	@Override
-	public double cluTotal(Forder forder) {
-		double total=0.0;
-		for(Sorder temp:forder.getSorderList()){
-			total +=temp.getNumber()*temp.getPrice();
+	public BigDecimal cluTotal(Forder forder) {
+		BigDecimal total=new BigDecimal(0.00);
+		for(Sorder temp : forder.getSorderList()){
+			//total +=temp.getNumber()*temp.getPrice();
+			total=total.add(temp.getPrice().multiply(new BigDecimal(temp.getNumber())));
 		}
 		return total;
 	}

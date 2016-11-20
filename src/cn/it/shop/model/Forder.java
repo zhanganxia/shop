@@ -1,5 +1,6 @@
 package cn.it.shop.model;
 
+import java.math.BigDecimal;
 import java.sql.Timestamp;
 
 import java.util.ArrayList;
@@ -22,7 +23,7 @@ public class Forder implements java.io.Serializable {
 	private String phone;
 	private String remark;
 	private Timestamp date;
-	private Double total;
+	private BigDecimal total;
 	private String post;
 	private String address;
 	private User user;
@@ -47,7 +48,7 @@ public class Forder implements java.io.Serializable {
 	}
 	
 	public Forder(Integer id, String name, String phone, String remark,
-			Timestamp date, Double total, String post, String address,
+			Timestamp date, BigDecimal total, String post, String address,
 			User user, Status status, List<Sorder> sorderList) {
 		super();
 		this.id = id;
@@ -108,11 +109,11 @@ public class Forder implements java.io.Serializable {
 		this.date = date;
 	}
 
-	public Double getTotal() {
+	public BigDecimal getTotal() {
 		return this.total;
 	}
 
-	public void setTotal(Double total) {
+	public void setTotal(BigDecimal total) {
 		this.total = total;
 	}
 

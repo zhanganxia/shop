@@ -8,18 +8,32 @@
 		//注册事件
 			$(".text").change(function(){
 			//2.验证数据的有效性,必须是自然数
-			var number=this.value;
-			if(!isNaN(number) && parseInt(number)==number && number>0){
-				//更新合法数据的值
-				$(this).attr("lang",number);
-				var pid=$(this).parents("tr:first").attr("lang");
-				//发送ajax请求，传输当前的数量与商品的id，返回的是总价格
-				$.post("sorder_updateSorder.action",{number:number,'product.id':pid},function(total){
-					alert(total);
+				var number=this.value;//也可以使用$(this).val();
+				//isNaN(number)表示若number不是数字就返回真
+				if(!isNaN(number) && parseInt(number)==number && number>0){
+					//更新合法数据的值，如果合法，同步更新数据
+					$(this).attr("lang",number);
+					//找到当前标签中第一个是tr的父节点，然后拿到属性为lang的值，也就是商品的id
+					var pid=$(this).parents("tr:first").attr("lang");
+					//发送ajax请求，传输当前的数量与商品的id，返回的是总价格
+					$.post("sorder_updateSorder.action",{number:number,'product.id':pid},function(total){
+						$("#total").html(total).toFixed(2);//所有商品的小计
+						/* var yunfei = $("#yufei").html(yunfei);
+						alert(yunfei); */
+						/*  var yunfei = $("#yufei").html();
+						$("#totalAll").html((total*1+yunfei*1).toFixed(2));  */
+					/* alert($(this).parent().prev().html()); */
 				},"text"); 
+					//更新单个商品小计
+				 $(this).parent().next().html($(this).parent().prev().html()*number).toFixed(2); 
+				
+				/*  var price=($(this).parent().prev().html()*number).toFixed(2);
+				 $(this).paren().next().html(price);	 */
+				/* $(this).parent().prev().html()*number; 	 */		
 			}else{
+				//如果非法，还原为刚刚合法的数据
 				this.value=$(this).attr("lang");
-			}
+				}
 			});
 		});
 	</script>
@@ -57,6 +71,7 @@
 						</div>
 					</div>
 				</div>
+			</div>
 			</div>
 		</div>
 		<!-- 头部结束 -->
@@ -130,7 +145,7 @@
 						<th class="align_center" width="15%">小计</th>
 						<th class="align_center" width="10%">删除</th>
 					</tr>
-					<c:forEach items="${sessionScope.forder.sorderList}" var="sorder">
+					<c:forEach items="${sessionScope.forder.sorderList}" var="sorder" varStatus="num">
 						<tr lang="${sorder.product.id}">
 							<td class="align_center"><a href="#" class="edit">${sorder.product.id}</a>
 							</td>
@@ -140,14 +155,14 @@
 							<td class="align_left"><a class="pr_name" href="#">${sorder.name}</a>
 							</td>
 							<td class="align_center vline">
-								￥${sorder.price}
+								${sorder.price}
 							</td>
 							<td class="align_center vline">
-							<!-- 文本框 -->
-									<input class="text" style="height: 20px;" value="${sorder.number}" lang="${sorder.number}">		
+								<!-- 文本框 -->
+								<input class="text" style="height: 20px;" value="${sorder.number}" lang="${sorder.number}">		
 							</td>
 							<td class="align_center vline">
-								￥${sorder.price*sorder.number}
+								${sorder.price*sorder.number}
 							</td>
 							<td class="align_center vline"><a href="#" class="remove"></a>
 							</td>
@@ -161,20 +176,20 @@
 							<tr>
 								<td width="60%" colspan="1" class="align_left"><strong>小计</strong>
 								</td>
-								<td class="align_right" style=""><strong><span
-										class="price">￥109.00</span>
+								<td class="align_right" style=""><strong>￥<span
+										class="price">${sessionScope.forder.total}</span>
 								</strong>
 								</td>
 							</tr>
 							<tr>
 								<td width="60%" colspan="1" class="align_left">运费</td>
-								<td class="align_right" style=""><span class="price">￥0.00</span>
+								<td class="align_right" style="">￥<span class="price" id="yunfei">0.00</span>
 								</td>
 							</tr>
 							<tr>
 								<td width="60%" colspan="1" class="align_left total"><strong>总计</strong>
 								</td>
-								<td class="align_right" style=""><span class="total"><strong>￥${sessionScope.forder.total}</strong>
+								<td class="align_right" style="">￥<span class="total" id="total"><strong>${sessionScope.forder.total}</strong>
 								</span>
 								</td>
 							</tr>
@@ -198,6 +213,7 @@
 						<div style="clear:both"></div>
 					</div>
 				</div>
+			</div>
 			</div>
 			<!-- 导航栏结束 -->
 			<div class="footer_container">

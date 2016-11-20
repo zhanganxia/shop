@@ -28,6 +28,7 @@
 		<property name="locations">
 			<array>
 				<value>classpath:conn.properties</value>
+				<value>classpath:public.properties</value>
 			</array>
 		</property>
 	</bean>

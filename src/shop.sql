@@ -200,7 +200,7 @@ INSERT INTO product (name,price,pic,remark,xremark,commend,open,cid) VALUES
 ('韩版女装',0.01,'test.jpg','这里是简单介绍','这里是详细介绍',true,true,2);
 
 INSERT INTO product (name,price,pic,remark,xremark,commend,open,cid) VALUES 
-('雪地靴',0.01,'test.jpg','这里是简单介绍','这里是详细介绍',true,true,2);
+('雪地靴',299.00,'test.jpg','这里是简单介绍','这里是详细介绍',true,true,2);
 
 INSERT INTO product (name,price,pic,remark,xremark,commend,open,cid) VALUES 
 ('欧版女装',0.01,'test.jpg','这里是简单介绍','这里是详细介绍',true,true,2);
@@ -230,7 +230,7 @@ INSERT INTO product (name,price,pic,remark,xremark,commend,open,cid) VALUES
 ('空调',0.01,'test.jpg','这里是简单介绍','这里是详细介绍',true,true,4);
 
 INSERT INTO product (name,price,pic,remark,xremark,commend,open,cid) VALUES 
-('电视',0.01,'test.jpg','这里是简单介绍','这里是详细介绍',true,true,4);
+('电视',199.00,'test.jpg','这里是简单介绍','这里是详细介绍',true,true,4);
 
 /* 用户测试用例 */
 INSERT INTO user (login,name,pass,sex,phone,email)

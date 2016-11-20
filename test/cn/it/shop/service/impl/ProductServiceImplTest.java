@@ -36,4 +36,8 @@ public class ProductServiceImplTest {
 			System.out.println(product);
 			}
 		}
+	/*@Test
+	public void query(){
+		System.out.println(productService.query());
+	}*/
 	}

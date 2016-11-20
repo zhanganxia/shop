@@ -1,5 +1,7 @@
 package cn.it.shop.model;
 
+import java.math.BigDecimal;
+
 /**
  * Sorder entity. @author MyEclipse Persistence Tools
  */
@@ -10,7 +12,7 @@ public class Sorder implements java.io.Serializable {
 
 	private Integer id;
 	private String name;
-	private Double price;
+	private BigDecimal price;
 	private Integer number;
 	private Product product;
 	private Forder forder;
@@ -38,7 +40,7 @@ public class Sorder implements java.io.Serializable {
 	/** default constructor */
 	public Sorder() {
 	}
-	public Sorder(Integer id, String name, Double price, Integer number,
+	public Sorder(Integer id, String name, BigDecimal price, Integer number,
 			Product product, Forder forder, Integer findex) {
 		super();
 		this.id = id;
@@ -72,12 +74,12 @@ public class Sorder implements java.io.Serializable {
 	public void setName(String name) {
 		this.name = name;
 	}
-
-	public Double getPrice() {
-		return this.price;
+	
+	public BigDecimal getPrice() {
+		return price;
 	}
 
-	public void setPrice(Double price) {
+	public void setPrice(BigDecimal price) {
 		this.price = price;
 	}
 
