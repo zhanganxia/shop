@@ -62,10 +62,9 @@
 						<li><a herf="#" title="send_product_query.action">商品管理</a></li>
 					</ul>
 				</div>
-			<div title="后台操作">
+			<div title="销售管理">
 					<ul>
-						<li><a herf="#">类别管理</a></li>
-						<li><a herf="#">商品管理</a></li>
+						<li><a herf="#" title="send_sale_sale.action">销售管理</a></li>
 					</ul>
 				</div>
 			</div>

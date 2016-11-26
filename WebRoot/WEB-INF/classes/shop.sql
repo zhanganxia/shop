@@ -187,20 +187,15 @@ INSERT INTO category (type,hot,aid) VALUES ('老人休闲',false,2);
 INSERT INTO product (name,price,pic,remark,xremark,commend,open,cid) VALUES 
 ('圣得西服',0.01,'test.jpg','这里是简单介绍','这里是详细介绍',true,true,1);
 
-INSERT INTO product (name,price,pic,remark,xremark,commend,open,cid) VALUES 
-('罗蒙西服',0.01,'test.jpg','这里是简单介绍','这里是详细介绍',true,true,1);
+INSERT INTO product (name,price,pic,remark,xremark,commend,open,cid) VALUES ('罗蒙西服',0.01,'pr_l_5.jpg','这里是简单介绍','这里是详细介绍',true,true,1);
 
-INSERT INTO product (name,price,pic,remark,xremark,commend,open,cid) VALUES 
-('衫衫西服',0.01,'test.jpg','这里是简单介绍','这里是详细介绍',true,true,1);
+INSERT INTO product (name,price,pic,remark,xremark,commend,open,cid) VALUES ('衫衫西服',0.01,'pr_l_3.jpg','这里是简单介绍','这里是详细介绍',true,true,1);
 
-INSERT INTO product (name,price,pic,remark,xremark,commend,open,cid) VALUES 
-('金利来西服',0.01,'test.jpg','这里是简单介绍','这里是详细介绍',true,true,1);
+INSERT INTO product (name,price,pic,remark,xremark,commend,open,cid) VALUES ('金利来西服',0.01,'11.jpg','这里是简单介绍','这里是详细介绍',true,true,1);
 
-INSERT INTO product (name,price,pic,remark,xremark,commend,open,cid) VALUES 
-('韩版女装',0.01,'test.jpg','这里是简单介绍','这里是详细介绍',true,true,2);
+INSERT INTO product (name,price,pic,remark,xremark,commend,open,cid) VALUES ('韩版女装',0.01,'22.jpg','这里是简单介绍','这里是详细介绍',true,true,2);
 
-INSERT INTO product (name,price,pic,remark,xremark,commend,open,cid) VALUES 
-('雪地靴',299.00,'test.jpg','这里是简单介绍','这里是详细介绍',true,true,2);
+INSERT INTO product (name,price,pic,remark,xremark,commend,open,cid) VALUES ('雪地靴',299.00,'test.jpg','这里是简单介绍','这里是详细介绍',true,true,2);
 
 INSERT INTO product (name,price,pic,remark,xremark,commend,open,cid) VALUES 
 ('欧版女装',0.01,'test.jpg','这里是简单介绍','这里是详细介绍',true,true,2);
