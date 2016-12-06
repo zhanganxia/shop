@@ -9,6 +9,7 @@ import cn.it.shop.model.Product;
 import cn.it.shop.model.Sorder;
 import cn.it.shop.service.SorderService;
 @Service("sorderService")
+@SuppressWarnings("unchecked")
 public class SorderServiceImpl extends BaseServiceImpl<Sorder> implements
 		SorderService {
 
@@ -53,8 +54,15 @@ public class SorderServiceImpl extends BaseServiceImpl<Sorder> implements
 		}
 		return forder;
 	}
+	
+	@Override
+	public List<Object> querySale(int number) {
+		String hql="SELECT sum(s.number),s.name FROM Sorder s JOIN s.product GROUP BY s.product.id";
+		return getSession().createQuery(hql)//
+		.setFirstResult(0)//
+		.setMaxResults(number)//
+		.list();
 
-
-
+	}
 
 }

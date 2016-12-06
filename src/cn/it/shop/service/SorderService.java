@@ -15,6 +15,7 @@ public interface SorderService extends BaseService<Sorder>{
 	public Forder updateSorder(Sorder sorder,Forder forder);
 	//把商品数据转化为Sorder
 	public Sorder productToSorder(Product product);
-	
+	//查询热点商品的销售量
+	public List<Object> querySale(int number);
 	
 }

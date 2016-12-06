@@ -246,7 +246,7 @@ INSERT INTO forder (name,phone,remark,date,total,address,post,uid) VALUES ('bb',
 /*插入购物车项测试用例*/
 INSERT INTO sorder (name,price,number,pid,fid) VALUES ('空调',200,1,15,2013021801);
 INSERT INTO sorder (name,price,number,pid,fid) VALUES ('电视',0.3,1,16,2013021801);
-
+INSERT INTO sorder (name,price,number,pid,fid) VALUES ('圣得西服',0.01,1,1,2016021801);
 
 SELECT * FROM account;
 SELECT * FROM category;
@@ -255,3 +255,4 @@ SELECT * FROM user;
 SELECT * FROM status;
 SELECT * FROM forder;
 SELECT * FROM sorder;
+SELECT sum(number) as '销量',name as '名称' FROM sorder group by pid
