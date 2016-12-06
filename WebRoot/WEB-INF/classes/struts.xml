@@ -67,6 +67,7 @@
 		
 		<action name="sorder_*" class="sorderAction" method="{1}">
 			<result name="showCar" type="redirect">/showCar.jsp</result>
+			<result name="jsonList" type="json"/>
 		</action>
 		<action name="user_*" class="userAction" method="{1}">
 			<result name="goURL">${#session.goURL}</result>

@@ -2,9 +2,12 @@ package cn.it.shop.action;
 
 import java.io.ByteArrayInputStream;
 import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
+
+import com.opensymphony.xwork2.ActionContext;
 
 import cn.it.shop.model.Forder;
 import cn.it.shop.model.Product;
@@ -14,6 +17,12 @@ import cn.it.shop.model.Sorder;
 @Scope("prototype")
 public class SorderAction extends BaseAction<Sorder> {
 
+	public String querySale(){
+		List<Object> jsonList=sorderService.querySale(model.getNumber());
+		ActionContext.getContext().getValueStack().push(jsonList);
+		return "jsonList";
+	}
+	
 	//根据商品id更新商品类别
 	public String updateSorder(){
 		Forder forder=(Forder)session.get("forder");
